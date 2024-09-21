@@ -5,6 +5,8 @@ import TopNav from "./components/TopNav";
 import NotificationsPanel from "./components/NotificationsPanel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DefaultDashboard from "./pages/DefaultDashboard";
+import ActivitiesPanel from "./components/ActivitiesPanel";
+import ContactsList from "./components/ContactsList";
 
 const App = () => {
   return (
@@ -20,7 +22,11 @@ const App = () => {
               </Routes>
             </div>
           </div>
-          <NotificationsPanel />
+          <div>
+            <NotificationsPanel />
+            <ActivitiesPanel />
+            <ContactsList />
+          </div>
         </div>
       </Router>
     </ThemeProvider>

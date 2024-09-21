@@ -5,6 +5,9 @@ import RevenueLineChart from "../components/RevenueLineChart";
 import RevenueByLocation from "../components/RevenueByLocation";
 import TopSellingProducts from "../components/TopSellingProducts";
 import TotalSalesDonutChart from "../components/TotalSalesDonutChart";
+import NotificationsPanel from "../components/NotificationsPanel";
+import ActivitiesPanel from "../components/ActivitiesPanel";
+import ContactsList from "../components/ContactsList";
 
 const DefaultDashboard = () => {
   return (

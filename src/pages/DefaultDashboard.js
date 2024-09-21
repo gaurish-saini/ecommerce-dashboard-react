@@ -8,22 +8,26 @@ import TotalSalesDonutChart from "../components/TotalSalesDonutChart";
 
 const DefaultDashboard = () => {
   return (
-    <div className="p-6">
-      {/* Overview Section */}
-      <OverviewSection />
+    <div className="p-[28px] bg-white dark:bg-black">
+      <div className="flex flex-col gap-4">
+        <h4 className="text-sm font-semibold text-black dark:text-white">
+          eCommerce
+        </h4>
+        <div className="w-full flex gap-[28px]">
+          <div className="w-1/2">
+            <OverviewSection />
+          </div>
+          <div className="w-1/2">
+            <ProjectionsBarChart />
+          </div>
+        </div>
+      </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        <ProjectionsBarChart />
+      <div className="mt-6">
+        <RevenueLineChart />
         <RevenueByLocation />
       </div>
 
-      {/* Revenue Line Chart */}
-      <div className="mt-6">
-        <RevenueLineChart />
-      </div>
-
-      {/* Top Selling Products and Total Sales */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         <TopSellingProducts />
         <TotalSalesDonutChart />

@@ -12,7 +12,7 @@ const App = () => {
   return (
     <ThemeProvider>
       <Router>
-        <div className="flex">
+        <div className="flex max-w-[1440px] mx-auto">
           <Sidebar />
           <div className="flex-1">
             <div>
@@ -31,7 +31,7 @@ const App = () => {
             */}
             </Routes>
           </div>
-          <div>
+          <div className="w-[280px]">
             <NotificationsPanel />
             <ActivitiesPanel />
             <ContactsList />

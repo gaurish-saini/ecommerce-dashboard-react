@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { ReactComponent as PositiveTrendIcon } from "../assets/images/positiveTrendIcon.svg";
+import { ReactComponent as NegativeTrendIcon } from "../assets/images/negativeTrendIcon.svg";
 
-const OverviewCard = ({ title, value, percentageChange, isPositive }) => {
+const OverviewCard = ({
+  title,
+  value,
+  isPositive,
+  percentageChange,
+  cardStyle,
+}) => {
+  const { theme } = useContext(ThemeContext);
+
+  // Apply theme-specific classes
+  const lightClasses = {
+    customers: "bg-pattensBlue text-black",
+    orders: "bg-catskillWhite text-black",
+    revenue: "bg-cream text-black",
+    growth: "bg-linkWater text-black",
+  };
+
+  const darkClasses = {
+    customers: "bg-pattensBlue",
+    orders: "bg-mineShaft text-white",
+    revenue: "bg-mineShaft text-white",
+    growth: "bg-linkWater",
+  };
+
+  const appliedClasses =
+    theme === "light" ? lightClasses[cardStyle] : darkClasses[cardStyle];
+
   return (
-    <div className="p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg flex flex-col">
-      <h4 className="text-gray-500 dark:text-gray-300 text-sm font-semibold mb-1">
-        {title}
-      </h4>
-      <div className="flex items-center justify-between">
-        <span className="text-2xl font-bold text-gray-900 dark:text-white">
-          {value}
-        </span>
-        <span
-          className={`text-sm ${
-            isPositive ? "text-green-500" : "text-red-500"
-          }`}
-        >
+    <div
+      className={`p-6 shadow-md rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
+    >
+      <h4 className="mb-2 text-sm font-semibold">{title}</h4>
+      <div className="flex flex-row hover:flex-row-reverse items-center justify-between">
+        <span className="text-2xl leading-9 font-bold">{value}</span>
+        <span className="text-xs leading-[18px] inline-flex items-center gap-[5.5px]">
           {percentageChange}
+          {isPositive ? <PositiveTrendIcon /> : <NegativeTrendIcon />}
         </span>
       </div>
     </div>

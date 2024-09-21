@@ -1,10 +1,10 @@
 const projectionsData = [
-  { month: "Jan", projection: 25000, actual: 30000 },
-  { month: "Feb", projection: 27000, actual: 25000 },
-  { month: "Mar", projection: 30000, actual: 32000 },
-  { month: "Apr", projection: 35000, actual: 31000 },
-  { month: "May", projection: 38000, actual: 36000 },
-  { month: "Jun", projection: 40000, actual: 37000 },
+  { Month: "Jan", Actual: 18000, Projection: 4000 },
+  { Month: "Feb", Actual: 21000, Projection: 4000 },
+  { Month: "Mar", Actual: 18500, Projection: 4000 },
+  { Month: "Apr", Actual: 22000, Projection: 4000 },
+  { Month: "May", Actual: 15500, Projection: 4000 },
+  { Month: "Jun", Actual: 24000, Projection: 4000 },
 ];
 
 export default projectionsData;

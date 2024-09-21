@@ -7,7 +7,7 @@ import Pages from "./Pages";
 
 const Sidebar = () => {
   return (
-    <div className="w-64 h-screen bg-gray-200 dark:bg-gray-900 text-black dark:text-white flex flex-col">
+    <div className="w-[212px] h-screen bg-gray-200 dark:bg-gray-900 text-black dark:text-white flex flex-col">
       {/* Brand Section */}
       <Brand />
 

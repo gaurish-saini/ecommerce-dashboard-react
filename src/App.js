@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider } from "./context/ThemeContext";
+import Sidebar from "./components/Sidebar";
+import TopNav from "./components/TopNav";
+import NotificationPanel from "./components/NotificationPanel";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DefaultDashboard from "./pages/DefaultDashboard";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Router>
+        <div className="flex">
+          <Sidebar />
+          <div className="flex-1">
+            <TopNav />
+            <div className="p-6">
+              <Routes>
+                <Route path="/dashboard" element={<DefaultDashboard />} />
+              </Routes>
+            </div>
+          </div>
+          <NotificationPanel />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

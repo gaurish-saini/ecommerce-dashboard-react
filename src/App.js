@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Sidebar from "./components/Sidebar";
 import TopNav from "./components/TopNav";
-import NotificationPanel from "./components/NotificationPanel";
+import NotificationsPanel from "./components/NotificationsPanel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DefaultDashboard from "./pages/DefaultDashboard";
 
@@ -20,7 +20,7 @@ const App = () => {
               </Routes>
             </div>
           </div>
-          <NotificationPanel />
+          <NotificationsPanel />
         </div>
       </Router>
     </ThemeProvider>

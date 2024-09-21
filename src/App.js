@@ -15,12 +15,21 @@ const App = () => {
         <div className="flex">
           <Sidebar />
           <div className="flex-1">
-            <TopNav />
-            <div className="p-6">
-              <Routes>
-                <Route path="/dashboard" element={<DefaultDashboard />} />
-              </Routes>
+            <div>
+              <TopNav />
             </div>
+            {/* Main content area where we show different dashboards */}
+            <Routes>
+              {/* Default Dashboard Route */}
+              <Route path="/dashboard/default" element={<DefaultDashboard />} />
+
+              {/* Add routes for other dashboards (eCommerce, Projects, etc.) here */}
+              {/* Example:
+              <Route path="/dashboard/ecommerce" element={<EcommerceDashboard />} />
+              <Route path="/dashboard/projects" element={<ProjectsDashboard />} />
+              <Route path="/dashboard/online-courses" element={<OnlineCoursesDashboard />} />
+            */}
+            </Routes>
           </div>
           <div>
             <NotificationsPanel />

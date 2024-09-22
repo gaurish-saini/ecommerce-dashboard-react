@@ -25,7 +25,7 @@ const RevenueLineChart = () => {
   const previousWeekTotal = "$68,768";
 
   return (
-    <div className="p-6 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4 h-full">
+    <div className="p-6 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <div className="flex items-center divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue
@@ -102,7 +102,18 @@ const RevenueLineChart = () => {
             }
           />
 
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "#313831", // Tooltip background
+              border: "none",
+              borderRadius: "8px", // Rounded corners
+              color: "#fff", // Text color based on theme
+              fontSize: "12px", // Font size
+            }}
+            itemStyle={{
+              color: "#fff", // Text color for individual items
+            }}
+          />
 
           {/* Current Line (Black) */}
           <Line

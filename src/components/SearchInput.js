@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import pagesData from "../data/pagesData";
 import { ReactComponent as SearchIcon } from "../assets/images/searchIcon.svg";
 import { ReactComponent as SearchKeyboardAction } from "../assets/images/searchKeyboardAction.svg";
 import useOutsideClick from "../hooks/useOutsideClick";
+import { useKeyboardNavigation } from "../hooks/useKeyboardNavigation";
+import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
 
 const SearchInput = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const wrapperRef = useRef(null);
 
+  // Handle the search query change and filter results
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
@@ -33,26 +37,33 @@ const SearchInput = () => {
     }
   };
 
+  // Handle result click (navigating to the link)
   const handleResultClick = (link) => {
     setIsDropdownVisible(false);
     navigate(link);
   };
 
-  // Use the custom hook to detect outside clicks
+  // Redirect to default dashboard if query is empty and not already on /dashboard/default
+  useEffect(() => {
+    if (!query && location.pathname !== "/dashboard/default") {
+      navigate("/dashboard/default");
+    }
+  }, [query, location.pathname, navigate]);
+
+  // Close the dropdown when clicking outside
   useOutsideClick(wrapperRef, () => setIsDropdownVisible(false));
 
-  // Keyboard shortcut for search focus
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "/") {
-        e.preventDefault();
-        document.getElementById("search-input").focus();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
+  // Keyboard navigation in the dropdown
+  const selectedIndex = useKeyboardNavigation(
+    results.length,
+    isDropdownVisible,
+    (index) => handleResultClick(results[index].link) // Redirect on Enter
+  );
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  // Keyboard shortcut to focus the search input
+  useKeyboardShortcut("meta+/", () => {
+    document.getElementById("search-input").focus();
+  });
 
   return (
     <div className="relative" ref={wrapperRef}>
@@ -78,7 +89,11 @@ const SearchInput = () => {
             <li
               key={index}
               onClick={() => handleResultClick(result.link)}
-              className="p-1 rounded-md text-sm cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-400"
+              className={`p-1 rounded-md text-sm cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-400 ${
+                index === selectedIndex
+                  ? "bg-gray-400 dark:bg-gray-600 text-white"
+                  : ""
+              }`}
             >
               {result.name}
             </li>

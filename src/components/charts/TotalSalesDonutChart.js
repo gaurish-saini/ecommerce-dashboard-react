@@ -16,7 +16,7 @@ const TotalSalesDonutChart = () => {
   const total = totalSalesData.reduce((acc, item) => acc + item.value, 0);
 
   return (
-    <div className="p-6 w-[202px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <div className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Total Sales
       </h4>
@@ -61,7 +61,10 @@ const TotalSalesDonutChart = () => {
       {/* Sales Labels */}
       <ul className="mt-4 text-xs leading-[18px] flex flex-col gap-3 text-black dark:text-gray-300">
         {totalSalesData.map((entry, index) => (
-          <li key={index} className="flex justify-between">
+          <li
+            key={index}
+            className="py-0.5 px-1 flex justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg"
+          >
             <div className="flex items-center">
               <span
                 className="inline-block w-1.5 h-1.5 rounded-full mr-2"

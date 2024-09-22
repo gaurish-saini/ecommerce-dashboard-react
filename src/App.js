@@ -23,7 +23,7 @@ const App = () => {
       <Router>
         <div className="flex max-w-[1440px] mx-auto">
           {isLeftSidebarOpen && <LeftSidebar isOpen={isLeftSidebarOpen} />}
-          <div className="flex-1">
+          <div className="flex-1 bg-white dark:bg-black">
             <TopNav
               toggleLeftSidebar={toggleLeftSidebar}
               toggleRightSidebar={toggleRightSidebar}

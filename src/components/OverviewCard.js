@@ -35,8 +35,8 @@ const OverviewCard = ({
       className={`p-6 rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
     >
       <h4 className="mb-2 text-sm font-semibold">{title}</h4>
-      <div className="flex flex-row hover:flex-row-reverse items-center justify-between">
-        <span className="text-2xl leading-9 font-bold">{value}</span>
+      <div className="flex flex-row hover:flex-row-reverse items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg">
+        <span className="text-2xl leading-9 font-semibold">{value}</span>
         <span className="text-xs leading-[18px] inline-flex items-center gap-[5.5px]">
           {percentageChange}
           {isPositive ? <PositiveTrendIcon /> : <NegativeTrendIcon />}

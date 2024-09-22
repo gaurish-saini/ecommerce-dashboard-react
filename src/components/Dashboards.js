@@ -13,8 +13,9 @@ const Dashboards = () => {
       </h4>
       <ul className="flex flex-col gap-1">
         {dashboardsData.map((dashboard, index) => (
-          <li
+          <Link
             key={index}
+            to={dashboard.link}
             className={`flex items-center py-1 pr-2 cursor-pointer ${
               activeDashboard === dashboard.name
                 ? "bg-black/5 dark:bg-gray-700 rounded-lg"
@@ -35,13 +36,10 @@ const Dashboards = () => {
             <dashboard.image className="w-6 h-6 mr-1 text-black dark:text-white" />
 
             {/* Link and Name */}
-            <Link
-              to={dashboard.link}
-              className="text-sm text-black dark:text-white"
-            >
+            <span className="text-sm text-black dark:text-white">
               {dashboard.name}
-            </Link>
-          </li>
+            </span>
+          </Link>
         ))}
       </ul>
     </div>

@@ -25,7 +25,7 @@ const RevenueLineChart = () => {
   const previousWeekTotal = "$68,768";
 
   return (
-    <div className="p-6 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <div className="p-6 w-3/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <div className="flex items-center divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue

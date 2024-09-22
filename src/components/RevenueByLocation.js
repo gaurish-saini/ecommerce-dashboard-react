@@ -15,14 +15,14 @@ const RevenueByLocation = () => {
   }));
 
   return (
-    <div className="p-6 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <div className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Revenue by Location
       </h4>
 
       {/* Container for the map with custom width and height */}
       <div
-        className="w-[154px] h-[82px] overflow-hidden"
+        className="h-[82px] overflow-hidden"
         style={{
           backgroundColor: isDarkMode ? "#FFFFFF" : "transparent", // Conditional background based on theme
         }}

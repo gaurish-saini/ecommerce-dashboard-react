@@ -1,10 +1,11 @@
 import React from "react";
+import brandLogo from "../assets/images/brandLogo.png";
 
 const Brand = () => {
   return (
-    <div className="p-4 flex items-center">
-      {/* Replace with an actual logo if needed */}
-      <div className="text-3xl font-bold">ByeWind</div>
+    <div className="flex items-center gap-2">
+      <img src={brandLogo} alt="Brand Logo" className="w-6 h-6" />
+      <div className="text-sm text-black dark:text-white">ByeWind</div>
     </div>
   );
 };

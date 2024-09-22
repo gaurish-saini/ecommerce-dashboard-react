@@ -1,14 +1,14 @@
 import React from "react";
-import OverviewSection from "../components/OverviewSection";
-import ProjectionsBarChart from "../components/ProjectionsBarChart";
-import RevenueLineChart from "../components/RevenueLineChart";
+import OverviewSection from "../containers/OverviewSection";
+import ProjectionsBarChart from "../components/charts/ProjectionsBarChart";
+import RevenueLineChart from "../components/charts/RevenueLineChart";
 import RevenueByLocation from "../components/RevenueByLocation";
 import TopSellingProducts from "../components/TopSellingProducts";
-import TotalSalesDonutChart from "../components/TotalSalesDonutChart";
+import TotalSalesDonutChart from "../components/charts/TotalSalesDonutChart";
 
 const DefaultDashboard = () => {
   return (
-    <div className="p-[28px] bg-white dark:bg-black flex flex-col gap-[28px]">
+    <div className="p-[28px] h-screen bg-white dark:bg-black flex flex-col gap-[28px]">
       <div className="flex flex-col gap-4">
         <h4 className="text-sm font-semibold text-black dark:text-white">
           eCommerce

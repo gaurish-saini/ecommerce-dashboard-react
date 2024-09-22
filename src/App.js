@@ -1,29 +1,19 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
-import Sidebar from "./components/Sidebar";
-import TopNav from "./components/TopNav";
-import NotificationsPanel from "./components/NotificationsPanel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import TopNav from "./containers/TopNav";
+import LeftSidebar from "./containers/LeftSidebar";
+import RightSidebar from "./containers/RightSidebar";
 import DefaultDashboard from "./pages/DefaultDashboard";
-import ActivitiesPanel from "./components/ActivitiesPanel";
-import ContactsList from "./components/ContactsList";
 
 const App = () => {
   return (
     <ThemeProvider>
       <Router>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2XYg5KU+wr1b4zLFpHk6Wf5eV0eN1U1zEvJ+vAr5U5tcTz4Vfiit/fmxtd/jr6MEhPeHKxwA=="
-          crossorigin=""
-        />
         <div className="flex max-w-[1440px] mx-auto">
-          <Sidebar />
+          <LeftSidebar />
           <div className="flex-1">
-            <div>
-              <TopNav />
-            </div>
+            <TopNav />
             {/* Main content area where we show different dashboards */}
             <Routes>
               {/* Default Dashboard Route */}
@@ -37,11 +27,7 @@ const App = () => {
             */}
             </Routes>
           </div>
-          <div className="w-[280px]">
-            <NotificationsPanel />
-            <ActivitiesPanel />
-            <ContactsList />
-          </div>
+          <RightSidebar />
         </div>
       </Router>
     </ThemeProvider>

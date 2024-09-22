@@ -1,53 +1,40 @@
-import React, { useState } from "react";
-import pagesData from "../data/pagesData";
+import React from "react";
 import { Link } from "react-router-dom";
+import Accordion from "../components/utility/Accordion";
+import pagesData from "../data/pagesData";
 
 const Pages = () => {
-  const [isUserProfileOpen, setIsUserProfileOpen] = useState(false);
-
   return (
-    <div className="p-4">
-      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-300 mb-2">
+    <div className="flex flex-col gap-1">
+      <h4 className="text-sm px-2 py-1 text-black/40 dark:text-white/40">
         Pages
       </h4>
+      {/* Dynamically Render Accordions with Icons */}
+      {Object.keys(pagesData).map((sectionKey, index) => {
+        const section = pagesData[sectionKey];
+        const IconComponent = section.icon; // Use IconComponent directly
 
-      {/* User Profile Accordion */}
-      <button
-        onClick={() => setIsUserProfileOpen(!isUserProfileOpen)}
-        className="hover:bg-gray-300 dark:hover:bg-gray-700 block p-2 rounded w-full text-left"
-      >
-        User Profile
-        <span className="float-right">{isUserProfileOpen ? "▲" : "▼"}</span>
-      </button>
-
-      {isUserProfileOpen && (
-        <ul className="pl-4 mt-2">
-          {pagesData.userProfile.map((item, index) => (
-            <li key={index} className="py-2">
-              <Link
-                to={item.link}
-                className="hover:bg-gray-300 dark:hover:bg-gray-700 block p-2 rounded"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* Other Pages */}
-      <ul className="mt-2">
-        {pagesData.otherPages.map((item, index) => (
-          <li key={index} className="py-2">
-            <Link
-              to={item.link}
-              className="hover:bg-gray-300 dark:hover:bg-gray-700 block p-2 rounded"
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        return (
+          <Accordion
+            key={index}
+            title={section.title}
+            IconComponent={IconComponent} // Passing the icon as a component
+          >
+            <ul>
+              {section.items.map((item, subIndex) => (
+                <li
+                  key={subIndex}
+                  className="text-sm text-black dark:text-white py-1 pl-[28px] pr-2"
+                >
+                  <Link to={item.link} className="ml-6">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+        );
+      })}
     </div>
   );
 };

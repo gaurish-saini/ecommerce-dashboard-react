@@ -5,7 +5,7 @@ const TopNav = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
+    <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
       <div className="text-lg font-semibold">Dashboard</div>
       <div className="flex items-center space-x-4">
         <input
@@ -17,7 +17,7 @@ const TopNav = () => {
           {theme === "light" ? "🌙 Dark" : "☀️ Light"}
         </button>
       </div>
-    </div>
+    </nav>
   );
 };
 

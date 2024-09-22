@@ -8,8 +8,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import revenueData from "../data/revenueData";
-import { ThemeContext } from "../context/ThemeContext";
+import revenueData from "../../data/revenueData";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const RevenueLineChart = () => {
   const { theme } = useContext(ThemeContext);

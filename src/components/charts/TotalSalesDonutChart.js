@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
-import { ThemeContext } from "../context/ThemeContext"; // Assuming you have ThemeContext for dark mode
-import totalSalesData from "../data/totalSalesData";
+import { ThemeContext } from "../../context/ThemeContext"; // Assuming you have ThemeContext for dark mode
+import totalSalesData from "../../data/totalSalesData";
 
 // Custom colors for light and dark mode
 const LIGHT_COLORS = ["#1C1C1C", "#95A4FC", "#BAEDBD", "#B1E3FF"];

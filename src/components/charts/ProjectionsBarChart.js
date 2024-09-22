@@ -8,8 +8,8 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import projectionsData from "../data/projectionsData";
-import { ThemeContext } from "../context/ThemeContext";
+import projectionsData from "../../data/projectionsData";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const ProjectionsBarChart = () => {
   const { theme } = useContext(ThemeContext); // Access dark mode from context

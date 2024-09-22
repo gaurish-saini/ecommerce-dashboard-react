@@ -11,6 +11,7 @@ module.exports = {
         mineShaft: "#272727",
         linkWater: "#E5ECF6",
         pigeonPost: "#A8C5DA",
+        perfume: "#C6C7F8",
       },
     },
   },

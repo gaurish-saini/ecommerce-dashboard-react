@@ -9,7 +9,7 @@ import { ReactComponent as Sidebar } from "../assets/images/sidebar.svg";
 import { ReactComponent as TimeHistory } from "../assets/images/timeHistory.svg";
 
 const TopNav = ({ toggleLeftSidebar, toggleRightSidebar }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   return (
     <nav className="flex justify-between items-center px-[28px] py-5 bg-white dark:bg-black border-b border-black/10 dark:border-white/10">

@@ -3,37 +3,26 @@ import topSellingProductsData from "../data/topSellingProductsData";
 
 const TopSellingProducts = () => {
   return (
-    <div className="p-4 bg-white dark:bg-gray-800 shadow-md rounded-lg">
-      <h4 className="text-gray-500 dark:text-gray-300 text-sm font-semibold mb-4">
+    <div className="p-6 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+      <h4 className="text-black dark:text-white text-sm font-semibold mb-1">
         Top Selling Products
       </h4>
-      <table className="w-full text-left">
+      <table className="w-full text-left text-xs leading-[18px]">
         <thead>
-          <tr>
-            <th className="pb-2 text-gray-700 dark:text-gray-400">Name</th>
-            <th className="pb-2 text-gray-700 dark:text-gray-400">Price</th>
-            <th className="pb-2 text-gray-700 dark:text-gray-400">Quantity</th>
-            <th className="pb-2 text-gray-700 dark:text-gray-400">Amount</th>
+          <tr className="border-b border-black/20 dark:border-white/20 text-black/40 dark:text-white/40 font-normal">
+            <th className="py-[11px] font-normal">Name</th>
+            <th className="py-[11px] font-normal">Price</th>
+            <th className="py-[11px] font-normal">Quantity</th>
+            <th className="py-[11px] font-normal">Amount</th>
           </tr>
         </thead>
         <tbody>
           {topSellingProductsData.map((product, index) => (
-            <tr
-              key={index}
-              className="border-t border-gray-200 dark:border-gray-700"
-            >
-              <td className="py-2 text-gray-900 dark:text-white">
-                {product.name}
-              </td>
-              <td className="py-2 text-gray-900 dark:text-white">
-                {product.price}
-              </td>
-              <td className="py-2 text-gray-900 dark:text-white">
-                {product.quantity}
-              </td>
-              <td className="py-2 text-gray-900 dark:text-white">
-                {product.amount}
-              </td>
+            <tr key={index} className="text-black dark:text-white">
+              <td className="py-[11px]">{product.name}</td>
+              <td className="py-[11px]">{product.price}</td>
+              <td className="py-[11px]">{product.quantity}</td>
+              <td className="py-[11px]">{product.amount}</td>
             </tr>
           ))}
         </tbody>

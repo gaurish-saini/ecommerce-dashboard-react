@@ -15,7 +15,7 @@ const RevenueByLocation = () => {
   }));
 
   return (
-    <div className="p-6 w-[202px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <div className="p-6 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Revenue by Location
       </h4>
@@ -47,7 +47,7 @@ const RevenueByLocation = () => {
             <li key={index}>
               <div className="flex justify-between text-xs leading-[18px] text-black dark:text-white">
                 <span>{city.city}</span>
-                <span>{(city.revenue / 1000).toFixed(1)}K</span>
+                <span>{city.revenue / 1000}K</span>
               </div>
               {/* Progress bar */}
               <div className="h-0.5 w-full bg-pigeonPost/40 rounded-full">

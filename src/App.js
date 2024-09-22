@@ -12,6 +12,12 @@ const App = () => {
   return (
     <ThemeProvider>
       <Router>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2XYg5KU+wr1b4zLFpHk6Wf5eV0eN1U1zEvJ+vAr5U5tcTz4Vfiit/fmxtd/jr6MEhPeHKxwA=="
+          crossorigin=""
+        />
         <div className="flex max-w-[1440px] mx-auto">
           <Sidebar />
           <div className="flex-1">

@@ -10,6 +10,7 @@ module.exports = {
         catskillWhite: "#F7F9FB",
         mineShaft: "#272727",
         linkWater: "#E5ECF6",
+        pigeonPost: "#A8C5DA",
       },
     },
   },

@@ -25,22 +25,7 @@ const RevenueLineChart = () => {
   const previousWeekTotal = "$68,768";
 
   return (
-    <div className="p-4 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4 h-full">
-      <svg width="0" height="0">
-        <defs>
-          <radialGradient
-            id="blueLineGradient"
-            cx="45.49%"
-            cy="12.02%"
-            r="53.78%"
-            fx="45.49%"
-            fy="12.02%"
-          >
-            <stop offset="0%" stopColor="#000000" />
-            <stop offset="100%" stopColor="rgba(217, 217, 217, 0)" />
-          </radialGradient>
-        </defs>
-      </svg>
+    <div className="p-6 w-[662px] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4 h-full">
       <div className="flex items-center divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue
@@ -73,7 +58,7 @@ const RevenueLineChart = () => {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={232}>
         <LineChart
           data={revenueData}
           margin={{ top: 30, right: 20, bottom: 0, left: -10 }} // Add margin to accommodate the custom legend

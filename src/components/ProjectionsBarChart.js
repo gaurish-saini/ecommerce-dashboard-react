@@ -24,7 +24,7 @@ const ProjectionsBarChart = () => {
   const axisLineColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // X-axis color
 
   return (
-    <div className="p-4 bg-white dark:bg-mineShaft shadow-md rounded-lg flex flex-col gap-4 h-full">
+    <div className="p-4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4 h-full">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Projections vs Actuals
       </h4>
@@ -48,7 +48,9 @@ const ProjectionsBarChart = () => {
             tickLine={false} // Hide tick line
             domain={[0, 30000]} // Manually set the domain to match the design
             ticks={[0, 10000, 20000, 30000]} // Set ticks manually as per design
-            tickFormatter={(value) => `${value / 1000}M`}
+            tickFormatter={(value) =>
+              value === 0 ? value : `${value / 1000}M`
+            }
           />
 
           {/* X-Axis for months */}
@@ -63,7 +65,7 @@ const ProjectionsBarChart = () => {
             }} // Adjust tick color
             axisLine={{ stroke: axisLineColor }}
             tickLine={false} // Hide tick line
-            strokeOpacity={0.5}
+            strokeOpacity={0.3}
           />
 
           {/* Solid horizontal lines for Cartesian grid */}

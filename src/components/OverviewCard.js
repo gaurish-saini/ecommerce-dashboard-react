@@ -16,7 +16,7 @@ const OverviewCard = ({
   const lightClasses = {
     customers: "bg-pattensBlue text-black",
     orders: "bg-catskillWhite text-black",
-    revenue: "bg-cream text-black",
+    revenue: "bg-catskillWhite text-black",
     growth: "bg-linkWater text-black",
   };
 
@@ -32,7 +32,7 @@ const OverviewCard = ({
 
   return (
     <div
-      className={`p-6 shadow-md rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
+      className={`p-6 rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
     >
       <h4 className="mb-2 text-sm font-semibold">{title}</h4>
       <div className="flex flex-row hover:flex-row-reverse items-center justify-between">

@@ -1,10 +1,10 @@
 const revenueData = [
-  { month: "Jan", current: 20000, previous: 18000 },
-  { month: "Feb", current: 22000, previous: 21000 },
-  { month: "Mar", current: 25000, previous: 24000 },
-  { month: "Apr", current: 27000, previous: 26000 },
-  { month: "May", current: 29000, previous: 28000 },
-  { month: "Jun", current: 30000, previous: 29000 },
+  { Month: "Jan", Current: 20000, Previous: 20000 },
+  { Month: "Feb", Current: 29510, Previous: 10489 },
+  { Month: "Mar", Current: 25877, Previous: 14122 },
+  { Month: "Apr", Current: 14122, Previous: 25877 },
+  { Month: "May", Current: 10489, Previous: 29510 },
+  { Month: "Jun", Current: 19999, Previous: 20000 },
 ];
 
 export default revenueData;

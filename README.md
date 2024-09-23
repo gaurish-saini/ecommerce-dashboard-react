@@ -75,7 +75,7 @@ To start the React development server on your local machine:
 npm start
 ```
 
-This will open the app in your default browser at \`http://localhost:3000/\`.
+This will open the app in your default browser at `http://localhost:3000/`.
 
 ---
 

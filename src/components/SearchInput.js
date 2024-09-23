@@ -11,6 +11,7 @@ const SearchInput = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const wrapperRef = useRef(null);
@@ -43,13 +44,6 @@ const SearchInput = () => {
     navigate(link);
   };
 
-  // Redirect to default dashboard if query is empty and not already on /dashboard/default
-  useEffect(() => {
-    if (!query && location.pathname !== "/dashboard/default") {
-      navigate("/dashboard/default");
-    }
-  }, [query, location.pathname, navigate]);
-
   // Close the dropdown when clicking outside
   useOutsideClick(wrapperRef, () => setIsDropdownVisible(false));
 
@@ -63,7 +57,15 @@ const SearchInput = () => {
   // Keyboard shortcut to focus the search input
   useKeyboardShortcut("meta+/", () => {
     document.getElementById("search-input").focus();
+    setIsFocused(true); // Set focus on search input when keyboard shortcut is used
   });
+
+  // Redirect to default dashboard if query is empty and not already on /dashboard/default
+  useEffect(() => {
+    if (!query && isFocused && location.pathname !== "/dashboard/default") {
+      navigate("/dashboard/default");
+    }
+  }, [query, isFocused, location.pathname, navigate]);
 
   return (
     <div className="relative" ref={wrapperRef}>
@@ -77,6 +79,8 @@ const SearchInput = () => {
           value={query}
           onChange={handleSearch}
           placeholder="Search"
+          onFocus={() => setIsFocused(true)} // Set focus when input is clicked
+          onBlur={() => setIsFocused(false)} // Remove focus when input is blurred
           className="w-full ml-1 mr-2 bg-transparent text-black dark:text-white placeholder-black/20 dark:placeholder-white/20 outline-none focus:ring-0"
         />
         <span className="text-black/20 dark:text-white/20">

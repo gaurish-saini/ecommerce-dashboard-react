@@ -8,3 +8,17 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+.custom-checkbox:checked::after {
+  color: #fff; /* White tick */
+  background-color: #000;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

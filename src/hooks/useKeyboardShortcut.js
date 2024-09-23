@@ -2,14 +2,15 @@ import { useEffect } from "react";
 
 export const useKeyboardShortcut = (keyCombo, callback) => {
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      const keys = keyCombo.split("+");
-      const isMetaKey = keys.includes("meta");
-      const isCtrlKey = keys.includes("ctrl");
+    const keys = keyCombo.split("+");
+    const lastKey = keys.slice(-1)[0]; // Safely get the last key without mutation
+    const isMetaKey = keys.includes("meta");
+    const isCtrlKey = keys.includes("ctrl");
 
+    const handleKeyDown = (e) => {
       if (
-        (isMetaKey && e.metaKey && e.key === keys.pop()) ||
-        (isCtrlKey && e.ctrlKey && e.key === keys.pop())
+        (isMetaKey && e.metaKey && e.key === lastKey) ||
+        (isCtrlKey && e.ctrlKey && e.key === lastKey)
       ) {
         e.preventDefault();
         callback();

@@ -12,7 +12,7 @@ const statusColors = {
   Complete: "text-oceanGreen",
   Pending: "text-shakespeare",
   Approved: "text-goldenTainoi",
-  Rejected: "text-black/40",
+  Rejected: "text-black/40 dark:text-white/40",
 };
 
 const statusOptions = [
@@ -273,7 +273,12 @@ const OrderTable = () => {
               <td className="py-[11px] px-3 font-normal">{row.address}</td>
               <td className="py-[11px] px-3 font-normal">{row.date}</td>
               <td className="py-[11px] px-3 font-normal">
-                <span className={statusColors[row.status]}>{row.status}</span>
+                <span
+                  className={`flex items-center ${statusColors[row.status]}`}
+                >
+                  <span className="min-w-1.5 h-1.5 rounded-full bg-current mr-[5px]"></span>
+                  {row.status}
+                </span>
               </td>
             </tr>
           ))}

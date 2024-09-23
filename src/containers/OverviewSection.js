@@ -1,6 +1,7 @@
 import React from "react";
 import OverviewCard from "../components/OverviewCard";
 import overviewData from "../data/overviewData";
+import { Link } from "react-router-dom";
 
 const OverviewSection = () => {
   return (
@@ -12,13 +13,15 @@ const OverviewSection = () => {
         isPositive={true}
         cardStyle="customers"
       />
-      <OverviewCard
-        title="Orders"
-        value={overviewData.orders.value}
-        percentageChange={overviewData.orders.percentageChange}
-        isPositive={false}
-        cardStyle="orders"
-      />
+      <Link to="/orders">
+        <OverviewCard
+          title="Orders"
+          value={overviewData.orders.value}
+          percentageChange={overviewData.orders.percentageChange}
+          isPositive={false}
+          cardStyle="orders"
+        />
+      </Link>
       <OverviewCard
         title="Revenue"
         value={overviewData.revenue.value}

@@ -6,7 +6,7 @@ const orderData = [
     address: "Meadow Lane Oakland",
     date: "Just now",
     status: "In Progress",
-    avatar: "path/to/avatar1.png",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     id: "#CM9802",
@@ -15,7 +15,7 @@ const orderData = [
     address: "Larry San Francisco",
     date: "A minute ago",
     status: "Complete",
-    avatar: "path/to/avatar2.png",
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     id: "#CM9803",
@@ -24,7 +24,7 @@ const orderData = [
     address: "Bagwell Avenue Ocala",
     date: "1 hour ago",
     status: "Pending",
-    avatar: "path/to/avatar3.png",
+    avatar: "https://randomuser.me/api/portraits/men/2.jpg",
   },
   {
     id: "#CM9804",
@@ -33,7 +33,7 @@ const orderData = [
     address: "Washburn Baton Rouge",
     date: "Yesterday",
     status: "Approved",
-    avatar: "path/to/avatar4.png",
+    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
   },
   {
     id: "#CM9805",
@@ -42,7 +42,7 @@ const orderData = [
     address: "Nest Lane Olivette",
     date: "Feb 2, 2023",
     status: "Rejected",
-    avatar: "path/to/avatar5.png",
+    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {
     id: "#CM9806",
@@ -51,7 +51,7 @@ const orderData = [
     address: "Meadow Lane Oakland",
     date: "Just now",
     status: "In Progress",
-    avatar: "path/to/avatar1.png",
+    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
   },
   {
     id: "#CM9807",
@@ -60,7 +60,7 @@ const orderData = [
     address: "Larry San Francisco",
     date: "A minute ago",
     status: "Complete",
-    avatar: "path/to/avatar2.png",
+    avatar: "https://randomuser.me/api/portraits/men/8.jpg",
   },
   {
     id: "#CM9808",
@@ -69,7 +69,7 @@ const orderData = [
     address: "Bagwell Avenue Ocala",
     date: "1 hour ago",
     status: "Pending",
-    avatar: "path/to/avatar3.png",
+    avatar: "https://randomuser.me/api/portraits/men/30.jpg",
   },
   {
     id: "#CM9809",
@@ -78,7 +78,7 @@ const orderData = [
     address: "Washburn Baton Rouge",
     date: "Yesterday",
     status: "Approved",
-    avatar: "path/to/avatar4.png",
+    avatar: "https://randomuser.me/api/portraits/men/31.jpg",
   },
   {
     id: "#CM9810",
@@ -87,7 +87,7 @@ const orderData = [
     address: "Nest Lane Olivette",
     date: "Feb 2, 2023",
     status: "Rejected",
-    avatar: "path/to/avatar5.png",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     id: "#CM9811",
@@ -96,7 +96,7 @@ const orderData = [
     address: "Meadow Lane Oakland",
     date: "Just now",
     status: "In Progress",
-    avatar: "path/to/avatar1.png",
+    avatar: "https://randomuser.me/api/portraits/men/33.jpg",
   },
   {
     id: "#CM9812",
@@ -105,7 +105,7 @@ const orderData = [
     address: "Larry San Francisco",
     date: "A minute ago",
     status: "Complete",
-    avatar: "path/to/avatar2.png",
+    avatar: "https://randomuser.me/api/portraits/men/34.jpg",
   },
   {
     id: "#CM9813",
@@ -114,7 +114,7 @@ const orderData = [
     address: "Bagwell Avenue Ocala",
     date: "1 hour ago",
     status: "Pending",
-    avatar: "path/to/avatar3.png",
+    avatar: "https://randomuser.me/api/portraits/men/46.jpg",
   },
   {
     id: "#CM9814",
@@ -123,7 +123,7 @@ const orderData = [
     address: "Washburn Baton Rouge",
     date: "Yesterday",
     status: "Approved",
-    avatar: "path/to/avatar4.png",
+    avatar: "https://randomuser.me/api/portraits/men/48.jpg",
   },
   {
     id: "#CM9815",
@@ -132,7 +132,7 @@ const orderData = [
     address: "Nest Lane Olivette",
     date: "Feb 2, 2023",
     status: "Rejected",
-    avatar: "path/to/avatar5.png",
+    avatar: "https://randomuser.me/api/portraits/men/23.jpg",
   },
   // Add more rows as needed
 ];

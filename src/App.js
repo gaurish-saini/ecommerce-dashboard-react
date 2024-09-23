@@ -10,7 +10,7 @@ import TopNav from "./containers/TopNav";
 import LeftSidebar from "./containers/LeftSidebar";
 import RightSidebar from "./containers/RightSidebar";
 import DefaultDashboard from "./pages/DefaultDashboard";
-import OrderList from "./pages/OrderList";
+import OrdersList from "./pages/OrdersList";
 
 const App = () => {
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(true);
@@ -35,13 +35,7 @@ const App = () => {
 
               {/* Default Dashboard Route */}
               <Route path="/dashboard/default" element={<DefaultDashboard />} />
-              <Route path="/orders" element={<OrderList />} />
-
-              {/* Add routes for other dashboards */}
-              {/* Example:
-              <Route path="/dashboard/ecommerce" element={<EcommerceDashboard />} />
-              <Route path="/dashboard/projects" element={<ProjectsDashboard />} />
-              */}
+              <Route path="/orders" element={<OrdersList />} />
             </Routes>
           </div>
           {isRightSidebarOpen && <RightSidebar isOpen={isRightSidebarOpen} />}

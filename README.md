@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# **Dashboard React Application**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a feature-rich, interactive React dashboard application designed to handle various components such as dynamic tables, filters, pagination, search functionalities, sidebar navigation, and more. The project uses `react-router-dom` for routing, Tailwind CSS for styling, and state management via `useState`, `useEffect`, and custom hooks.
 
-## Available Scripts
+## **Design**
 
-In the project directory, you can run:
+- Link to Design File: https://www.figma.com/design/6rMhyrUQYgy4NW03QQC3il/UI-Developer-Assignment-(Copy)?node-id=4-2473&t=6iHLhlanCiVgogoR-1.
 
-### `npm start`
+## **Table of Contents**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Custom Components](#custom-components)
+- [Custom Hooks](#custom-hooks)
+- [Deployment](#deployment)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## **Features**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Dynamic Order List**: A fully paginated, sortable, and filterable order list with status color codes. Click on the Orders card in the dashboard to view Order List.
+2. **Left and Right Sidebar**: Toggleable left and right sidebars with smooth slide-in and out transitions. Click on the sidebars icons in the top navigation on either side to toggle.
+3. **Search Functionality**:
+   - Global search functionality with keyboard shortcuts (`Cmd + /` or `Ctrl + /`) to quickly search and navigate.
+4. **Breadcrumb Navigation**: A dynamic breadcrumb component that reflects the current route and provides a seamless user experience.
+5. **Sort and Filter**:
+   - Sort functionality to organize the table by user or other parameters.
+   - Multi-select filter with interactive pills that allow removing applied filters.
+6. **Custom Accordion Component**: Smooth accordion transitions for various page components.
+7. **Dark Mode Support**: Complete dark mode styling using Tailwind CSS. Click on the Sun icon in the top navigation to toggle between light and dark mode.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Technologies**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React**: The core framework for building UI components.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Router DOM**: For routing and navigation.
+- **Recharts**: To implement charts and visualizations.
+- **Custom Hooks**: For handling various functionalities such as dropdowns, keyboard shortcuts, and click outside.
+- **SVG Icons**: Using scalable vector graphics for icons throughout the app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## **Installation**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To get a local copy of the project up and running, follow these steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **1. Clone the repository**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/gaurish-saini/ecommerce-dashboard-react.git
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **2. Navigate to the project directory**
 
-## Learn More
+```bash
+cd ecommerce-dashboard-react
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **3. Install dependencies**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Before starting the project, install all required dependencies:
 
-### Code Splitting
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### **4. Start the development server**
 
-### Analyzing the Bundle Size
+To start the React development server on your local machine:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+This will open the app in your default browser at \`http://localhost:3000/\`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## **Custom Components**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### **1. `OverviewCard`**
 
-### Deployment
+- A reusable card component used for displaying key metrics (e.g., revenue, sales).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### **2. `Accordion`**
 
-### `npm run build` fails to minify
+- Custom accordion with smooth animations and dynamic icons.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **3. `Breadcrumb`**
+
+- Dynamically generated breadcrumbs to match the current route.
+
+### **4. `SearchInput`**
+
+- A search bar with keyboard shortcut support and dropdown search suggestions.
+
+### **5. `OrderList`**
+
+- Handles table data, pagination, sorting, filtering, and row selection.
+
+---
+
+## **Custom Hooks**
+
+### **1. `useOutsideClick`**
+
+- Detects when a click occurs outside of a referenced element and triggers a callback.
+
+### **2. `useKeyboardShortcut`**
+
+- Registers and handles global keyboard shortcuts.
+
+### **3. `useKeyboardNavigation`**
+
+- Handles keyboard navigation for lists or dropdown items using arrow keys.
+
+---
+
+## **Deployment**
+
+- This project is deployed here: https://byewind-juspay.netlify.app/

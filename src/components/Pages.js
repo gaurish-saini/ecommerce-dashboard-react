@@ -5,8 +5,8 @@ import pagesData from "../data/pagesData";
 
 const Pages = () => {
   return (
-    <div className="flex flex-col gap-1">
-      <h4 className="text-sm px-2 py-1 text-black/40 dark:text-white/40">
+    <div className="mt-3 flex flex-col gap-1">
+      <h4 className="text-sm py-1 px-3 text-black/40 dark:text-white/40">
         Pages
       </h4>
       {/* Dynamically Render Accordions with Icons */}
@@ -20,11 +20,11 @@ const Pages = () => {
             title={section.title}
             IconComponent={IconComponent} // Passing the icon as a component
           >
-            <ul>
+            <ul className="flex flex-col gap-1">
               {section.items.map((item, subIndex) => (
                 <li
                   key={subIndex}
-                  className="text-sm text-black dark:text-white py-1 pl-[28px] pr-2"
+                  className="text-sm text-black hover:text-black/40 dark:text-white dark:hover:text-white/40 pl-[28px] px-2 py-1"
                 >
                   <Link to={item.link} className="ml-6">
                     {item.name}

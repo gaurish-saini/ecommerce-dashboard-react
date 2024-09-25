@@ -60,10 +60,10 @@ const SearchInput = () => {
     setIsFocused(true); // Set focus on search input when keyboard shortcut is used
   });
 
-  // Redirect to default dashboard if query is empty and not already on /dashboard/default
+  // Redirect to default dashboard if query is empty and not already on /dashboards/default
   useEffect(() => {
-    if (!query && isFocused && location.pathname !== "/dashboard/default") {
-      navigate("/dashboard/default");
+    if (!query && isFocused && location.pathname !== "/dashboards/default") {
+      navigate("/dashboards/default");
     }
   }, [query, isFocused, location.pathname, navigate]);
 

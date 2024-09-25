@@ -6,22 +6,22 @@ import { ReactComponent as CoursesImg } from "../assets/images/book.svg";
 const dashboardsData = [
   {
     name: "Default",
-    link: "/dashboard/default",
+    link: "/dashboards/default",
     image: DefaultImg,
   },
   {
     name: "eCommerce",
-    link: "/dashboard/ecommerce",
+    link: "/dashboards/ecommerce",
     image: EcommerceImg,
   },
   {
     name: "Projects",
-    link: "/dashboard/projects",
+    link: "/dashboards/projects",
     image: ProjectsImg,
   },
   {
     name: "Online Courses",
-    link: "/dashboard/online-courses",
+    link: "/dashboards/online-courses",
     image: CoursesImg,
   },
 ];

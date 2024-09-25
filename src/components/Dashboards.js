@@ -7,8 +7,8 @@ const Dashboards = () => {
   const [activeDashboard, setActiveDashboard] = useState("Default");
 
   return (
-    <div>
-      <h4 className="text-sm px-2 py-1 text-black/40 dark:text-white/40 mb-1">
+    <div className="mt-3">
+      <h4 className="text-sm tracking-wide px-3 py-1 text-black/40 dark:text-white/40 mb-1">
         Dashboards
       </h4>
       <ul className="flex flex-col gap-1">
@@ -33,10 +33,10 @@ const Dashboards = () => {
             )}
 
             {/* Image */}
-            <dashboard.image className="w-6 h-6 mr-1 text-black dark:text-white" />
+            <dashboard.image className="w-5 h-5 mr-1 text-black dark:text-white" />
 
             {/* Link and Name */}
-            <span className="text-sm text-black dark:text-white">
+            <span className="text-sm text-black hover:text-black/40 dark:text-white dark:hover:text-white/40">
               {dashboard.name}
             </span>
           </Link>

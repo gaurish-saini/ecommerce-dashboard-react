@@ -30,11 +30,14 @@ const App = () => {
               toggleRightSidebar={toggleRightSidebar}
             />
             <Routes>
-              {/* Redirect root URL to /dashboard/default */}
-              <Route path="/" element={<Navigate to="/dashboard/default" />} />
+              {/* Redirect root URL to /dashboards/default */}
+              <Route path="/" element={<Navigate to="/dashboards/default" />} />
 
               {/* Default Dashboard Route */}
-              <Route path="/dashboard/default" element={<DefaultDashboard />} />
+              <Route
+                path="/dashboards/default"
+                element={<DefaultDashboard />}
+              />
               <Route path="/orders" element={<OrdersList />} />
             </Routes>
           </div>

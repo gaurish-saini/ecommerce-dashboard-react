@@ -34,7 +34,7 @@ const QuickInfoPanel = ({
             </div>
             <div className="w-full">
               {data.message && (
-                <div className="text-sm text-black dark:text-white truncate w-48">
+                <div className="text-sm text-black dark:text-white truncate w-48 tracking-[0.1px]">
                   {data.message}
                 </div>
               )}

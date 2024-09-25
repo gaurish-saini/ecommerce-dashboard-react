@@ -6,8 +6,8 @@ import contactsData from "../data/contactsData";
 
 const RightSidebar = ({ isOpen }) => {
   return (
-    <div
-      className={`max-w-[280px] flex flex-col gap-6 p-5 bg-white dark:bg-black border-l border-black/10 dark:border-white/10 transition-transform duration-300 ${
+    <aside
+      className={`max-w-[280px] w-full flex flex-col gap-6 p-5 bg-white dark:bg-black border-l border-black/10 dark:border-white/10 transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -32,7 +32,7 @@ const RightSidebar = ({ isOpen }) => {
         roundedIcon={true}
         timeStamp={false}
       />
-    </div>
+    </aside>
   );
 };
 

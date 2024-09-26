@@ -25,13 +25,13 @@ const RevenueLineChart = () => {
   const previousWeekTotal = "$68,768";
 
   return (
-    <section className="p-6 w-3/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <section className="p-6 w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <div className="flex items-center divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue
         </h4>
-        <div className="flex items-center gap-4 pl-4">
-          <span className="flex items-center gap-[5px]">
+        <div className="flex items-center gap-5 pl-6">
+          <span className="pl-1 pr-2 pb-0.5 flex items-center gap-1.5">
             <span
               className="w-1.5 h-1.5 rounded-full"
               style={{
@@ -40,10 +40,10 @@ const RevenueLineChart = () => {
             />
             <span className="text-xs leading-[18px] text-black dark:text-white">
               Current Week{" "}
-              <span className="font-semibold">{currentWeekTotal}</span>
+              <span className="ml-[3px] font-semibold">{currentWeekTotal}</span>
             </span>
           </span>
-          <span className="flex items-center gap-[5px]">
+          <span className="pl-1 pr-2 pb-0.5 flex items-center gap-1.5">
             <span
               className="w-1.5 h-1.5 rounded-full"
               style={{
@@ -52,16 +52,18 @@ const RevenueLineChart = () => {
             />
             <span className="text-xs leading-[18px] text-black dark:text-white">
               Previous Week{" "}
-              <span className="font-semibold">{previousWeekTotal}</span>
+              <span className="ml-[3px] font-semibold">
+                {previousWeekTotal}
+              </span>
             </span>
           </span>
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={232}>
+      <ResponsiveContainer width="100%">
         <LineChart
           data={revenueData}
-          margin={{ top: 30, right: 20, bottom: 0, left: -10 }} // Add margin to accommodate the custom legend
+          margin={{ top: 25, right: -20, bottom: 0, left: -20 }} // Add margin to accommodate the custom legend
         >
           <CartesianGrid
             stroke={gridColor}
@@ -73,7 +75,7 @@ const RevenueLineChart = () => {
             dataKey="Month"
             tick={{
               fill: axisTextColor,
-              dy: 10,
+              dy: 7,
               fontSize: 12,
               fontWeight: 400,
               opacity: 0.4,
@@ -81,13 +83,14 @@ const RevenueLineChart = () => {
             axisLine={{ stroke: axisLineColor }}
             tickLine={false}
             strokeOpacity={0.3}
-            padding={{ left: 30, right: 30 }}
+            strokeWidth={1}
+            padding={{ left: 50, right: 65 }}
           />
 
           <YAxis
             tick={{
               fill: axisTextColor,
-              dy: -5,
+              dy: -17,
               dx: -5,
               fontSize: 12,
               fontWeight: 400,

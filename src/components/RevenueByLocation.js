@@ -15,7 +15,7 @@ const RevenueByLocation = () => {
   }));
 
   return (
-    <section className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <section className="p-6 w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Revenue by Location
       </h4>

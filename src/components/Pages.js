@@ -5,7 +5,7 @@ import pagesData from "../data/pagesData";
 
 const Pages = () => {
   return (
-    <div className="mt-3 flex flex-col gap-1">
+    <section className="mt-3 flex flex-col gap-1">
       <h4 className="text-sm py-1 px-3 text-black/40 dark:text-white/40">
         Pages
       </h4>
@@ -35,7 +35,7 @@ const Pages = () => {
           </Accordion>
         );
       })}
-    </div>
+    </section>
   );
 };
 

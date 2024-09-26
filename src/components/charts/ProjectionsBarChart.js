@@ -24,7 +24,7 @@ const ProjectionsBarChart = () => {
   const axisLineColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // X-axis color
 
   return (
-    <div className="p-6 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <section className="p-6 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Projections vs Actuals
       </h4>
@@ -110,7 +110,7 @@ const ProjectionsBarChart = () => {
           />
         </BarChart>
       </ResponsiveContainer>
-    </div>
+    </section>
   );
 };
 

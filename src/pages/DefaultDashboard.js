@@ -8,9 +8,9 @@ import TotalSalesDonutChart from "../components/charts/TotalSalesDonutChart";
 
 const DefaultDashboard = () => {
   return (
-    <section className="p-[28px] bg-white dark:bg-black flex flex-col gap-[28px]">
+    <main className="p-[28px] bg-white dark:bg-black flex flex-col gap-[28px]">
       <div className="flex flex-col gap-4">
-        <h4 className="text-sm font-semibold text-black dark:text-white">
+        <h4 className="py-1 px-2 text-sm font-semibold text-black dark:text-white">
           eCommerce
         </h4>
         <div className="w-full flex gap-[28px]">
@@ -32,7 +32,7 @@ const DefaultDashboard = () => {
         <TopSellingProducts />
         <TotalSalesDonutChart />
       </div>
-    </section>
+    </main>
   );
 };
 

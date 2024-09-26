@@ -16,7 +16,7 @@ const TotalSalesDonutChart = () => {
   const total = totalSalesData.reduce((acc, item) => acc + item.value, 0);
 
   return (
-    <div className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <section className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold">
         Total Sales
       </h4>
@@ -76,7 +76,7 @@ const TotalSalesDonutChart = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

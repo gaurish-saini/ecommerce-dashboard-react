@@ -7,7 +7,7 @@ const Dashboards = () => {
   const [activeDashboard, setActiveDashboard] = useState("Default");
 
   return (
-    <div className="mt-3">
+    <section className="mt-3">
       <h4 className="text-sm tracking-wide px-3 py-1 text-black/40 dark:text-white/40 mb-1">
         Dashboards
       </h4>
@@ -42,7 +42,7 @@ const Dashboards = () => {
           </Link>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

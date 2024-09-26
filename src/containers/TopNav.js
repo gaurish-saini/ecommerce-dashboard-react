@@ -28,7 +28,7 @@ const TopNav = ({ toggleLeftSidebar, toggleRightSidebar }) => {
 
       <div className="flex items-center gap-5">
         <SearchInput />
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-[13px] items-center">
           <span
             className="p-1 cursor-pointer text-black dark:text-white"
             onClick={toggleTheme}

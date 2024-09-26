@@ -23,7 +23,7 @@ const Breadcrumbs = () => {
             ) : (
               <Link
                 to={pathTo}
-                className="px-2 py-1 text-black/40 dark:text-white/40 hover:underline capitalize"
+                className="px-2 py-1 tracking-wide text-black/40 dark:text-white/40 hover:underline capitalize"
               >
                 {value}
               </Link>

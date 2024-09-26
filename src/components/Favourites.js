@@ -7,7 +7,7 @@ const Favourites = () => {
   const activeTabData = combinedData.find((tab) => tab.category === activeTab);
 
   return (
-    <div>
+    <section>
       <div className="flex gap-3 text-sm px-1 my-1">
         {combinedData.map((tab) => (
           <button
@@ -37,7 +37,7 @@ const Favourites = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

@@ -8,7 +8,7 @@ const QuickInfoPanel = ({
   timeStamp,
 }) => {
   return (
-    <div>
+    <section>
       <h4 className="py-2 px-1 text-black dark:text-white text-sm font-semibold mb-2">
         {sectionTitle}
       </h4>
@@ -52,7 +52,7 @@ const QuickInfoPanel = ({
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

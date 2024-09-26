@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const OverviewSection = () => {
   return (
-    <div className="grid grid-cols-2 gap-[28px]">
+    <section className="grid grid-cols-2 gap-[28px]">
       <OverviewCard
         title="Customers"
         value={overviewData.customers.value}
@@ -36,7 +36,7 @@ const OverviewSection = () => {
         isPositive={true}
         cardStyle="growth"
       />
-    </div>
+    </section>
   );
 };
 

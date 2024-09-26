@@ -3,7 +3,7 @@ import topSellingProductsData from "../data/topSellingProductsData";
 
 const TopSellingProducts = () => {
   return (
-    <div className="p-6 w-3/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <section className="p-6 w-3/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
       <h4 className="text-black dark:text-white text-sm font-semibold mb-1">
         Top Selling Products
       </h4>
@@ -27,7 +27,7 @@ const TopSellingProducts = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
 

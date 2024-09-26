@@ -24,22 +24,22 @@ const ProjectionsBarChart = () => {
   const axisLineColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // X-axis color
 
   return (
-    <section className="p-6 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
-      <h4 className="text-black dark:text-white text-sm font-semibold">
+    <section className="px-6 py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+      <h4 className="pt-0.5 text-black dark:text-white text-sm font-semibold">
         Projections vs Actuals
       </h4>
 
       <ResponsiveContainer width="100%" height={175}>
         <BarChart
           data={projectionsData}
-          margin={{ top: 10, right: 0, bottom: 0, left: -21 }}
+          margin={{ top: 16, right: 0, bottom: 5, left: -18 }}
         >
           {/* Y-Axis without axis line, only numbers */}
           <YAxis
             tick={{
               fill: axisTextColor, // Font color
               dy: -5, // Move tick labels up
-              dx: -5,
+              dx: -7,
               fontSize: 12, // Font size
               fontWeight: 400, // Font weight
               opacity: 0.4, // Opacity of tick labels
@@ -58,7 +58,7 @@ const ProjectionsBarChart = () => {
             dataKey="Month"
             tick={{
               fill: axisTextColor, // Move tick labels up
-              dy: 10,
+              dy: 7,
               fontSize: 12, // Font size
               fontWeight: 400, // Font weight
               opacity: 0.4,

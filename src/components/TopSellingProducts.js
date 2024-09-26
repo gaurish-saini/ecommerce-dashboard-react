@@ -18,7 +18,10 @@ const TopSellingProducts = () => {
         </thead>
         <tbody>
           {topSellingProductsData.map((product, index) => (
-            <tr key={index} className="text-black dark:text-white">
+            <tr
+              key={index}
+              className="text-black dark:text-white hover:bg-perfume/10"
+            >
               <td className="py-[11px]">{product.name}</td>
               <td className="py-[11px]">{product.price}</td>
               <td className="py-[11px]">{product.quantity}</td>

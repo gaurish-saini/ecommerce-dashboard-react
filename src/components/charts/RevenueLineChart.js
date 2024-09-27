@@ -60,10 +60,10 @@ const RevenueLineChart = () => {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%">
+      <ResponsiveContainer width="100%" height={232}>
         <LineChart
           data={revenueData}
-          margin={{ top: 25, right: -20, bottom: 0, left: -20 }} // Add margin to accommodate the custom legend
+          margin={{ top: 25, right: -20, bottom: -1, left: -20 }} // Add margin to accommodate the custom legend
         >
           <CartesianGrid
             stroke={gridColor}
@@ -90,7 +90,7 @@ const RevenueLineChart = () => {
           <YAxis
             tick={{
               fill: axisTextColor,
-              dy: -17,
+              dy: -18,
               dx: -5,
               fontSize: 12,
               fontWeight: 400,

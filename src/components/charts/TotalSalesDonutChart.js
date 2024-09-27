@@ -16,8 +16,8 @@ const TotalSalesDonutChart = () => {
   const total = totalSalesData.reduce((acc, item) => acc + item.value, 0);
 
   return (
-    <section className="p-6 w-1/4 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
-      <h4 className="text-black dark:text-white text-sm font-semibold">
+    <section className="p-6 w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+      <h4 className="px-0.5 tracking-wide text-black dark:text-white text-sm font-semibold">
         Total Sales
       </h4>
 
@@ -28,8 +28,8 @@ const TotalSalesDonutChart = () => {
             data={totalSalesData}
             cx="50%"
             cy="50%"
-            innerRadius={32} // Adjust inner radius to make it more like a donut
-            outerRadius={50} // Adjust outer radius
+            innerRadius={40} // Adjust inner radius to make it more like a donut
+            outerRadius={60} // Adjust outer radius
             cornerRadius={8} // Rounded corners for the segments
             paddingAngle={3} // Space between segments
             dataKey="value"
@@ -59,20 +59,20 @@ const TotalSalesDonutChart = () => {
       </div>
 
       {/* Sales Labels */}
-      <ul className="mt-4 text-xs leading-[18px] flex flex-col gap-3 text-black dark:text-gray-300">
+      <ul className="text-xs leading-[18px] flex flex-col gap-3 text-black dark:text-gray-300">
         {totalSalesData.map((entry, index) => (
           <li
             key={index}
-            className="py-0.5 px-1 flex justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg"
+            className="py-0.5 pl-3 flex justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg"
           >
             <div className="flex items-center">
               <span
-                className="inline-block w-1.5 h-1.5 rounded-full mr-2"
+                className="inline-block w-1.5 h-1.5 rounded-full mr-1"
                 style={{ backgroundColor: COLORS[index % COLORS.length] }}
               ></span>
-              {entry.name}
+              <span className="tracking-wide">{entry.name}</span>
             </div>
-            <span>${entry.value.toFixed(2)}</span>
+            <span className="w-[53px]">${entry.value.toFixed(2)}</span>
           </li>
         ))}
       </ul>

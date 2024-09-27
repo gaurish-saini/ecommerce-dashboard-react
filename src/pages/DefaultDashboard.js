@@ -23,7 +23,7 @@ const DefaultDashboard = () => {
         </div>
       </div>
 
-      <div className="flex gap-[26px]">
+      <div className="flex gap-[28px]">
         <RevenueLineChart />
         <RevenueByLocation />
       </div>

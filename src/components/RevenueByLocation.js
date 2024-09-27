@@ -15,8 +15,8 @@ const RevenueByLocation = () => {
   }));
 
   return (
-    <section className="p-6 w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
-      <h4 className="text-black dark:text-white text-sm font-semibold">
+    <section className="px-6 py-[18px] w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+      <h4 className="p-1 text-black dark:text-white text-sm font-semibold">
         Revenue by Location
       </h4>
 
@@ -40,12 +40,12 @@ const RevenueByLocation = () => {
       </div>
 
       {/* Revenue Data with Progress Bars */}
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-[17px]">
         {locationData.map((city, index) => {
           const percentage = (city.revenue / maxRevenue) * 100; // Calculate percentage based on fixed maxRevenue
           return (
-            <li key={index}>
-              <div className="flex justify-between text-xs leading-[18px] text-black dark:text-white">
+            <li key={index} className="">
+              <div className="pl-1 flex justify-between text-xs leading-[18px] text-black dark:text-white">
                 <span>{city.city}</span>
                 <span>{city.revenue / 1000}K</span>
               </div>

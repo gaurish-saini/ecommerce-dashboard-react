@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { ReactComponent as PositiveTrendIcon } from "../assets/images/positiveTrendIcon.svg";
 import { ReactComponent as NegativeTrendIcon } from "../assets/images/negativeTrendIcon.svg";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const OverviewCard = ({
   title,
@@ -31,8 +32,11 @@ const OverviewCard = ({
     theme === "light" ? lightClasses[cardStyle] : darkClasses[cardStyle];
 
   return (
-    <div
+    <motion.div
       className={`p-6 rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
+      whileHover={{ scale: 1.05 }} // Slight scale up on hover
+      whileTap={{ scale: 0.95 }} // Scale down on click/tap
+      transition={{ type: "spring", stiffness: 300 }} // Springy effect
     >
       <h4 className="mb-2 text-sm font-semibold">{title}</h4>
       <div className="flex flex-row hover:flex-row-reverse items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg">
@@ -44,7 +48,7 @@ const OverviewCard = ({
           {isPositive ? <PositiveTrendIcon /> : <NegativeTrendIcon />}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

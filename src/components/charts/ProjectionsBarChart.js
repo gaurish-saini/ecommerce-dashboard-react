@@ -10,10 +10,10 @@ import {
 } from "recharts";
 import projectionsData from "../../data/projectionsData";
 import { ThemeContext } from "../../context/ThemeContext";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const ProjectionsBarChart = () => {
   const { theme } = useContext(ThemeContext); // Access dark mode from context
-
   const isDarkMode = theme === "dark"; // Check if dark mode is active
   const barWidth = 20; // Adjust bar width
 
@@ -23,8 +23,19 @@ const ProjectionsBarChart = () => {
   const axisTextColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // Dark vs Light axis text color
   const axisLineColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // X-axis color
 
+  // Framer Motion animation variants for bars
+  const barVariants = {
+    hidden: { scaleY: 0, originY: 1 },
+    visible: { scaleY: 1, originY: 1 },
+  };
+
   return (
-    <section className="px-6 py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <motion.section
+      className="relative z-0 px-6 py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <h4 className="pt-0.5 text-black dark:text-white text-sm font-semibold">
         Projections vs Actuals
       </h4>
@@ -34,59 +45,55 @@ const ProjectionsBarChart = () => {
           data={projectionsData}
           margin={{ top: 16, right: 0, bottom: 5, left: -18 }}
         >
-          {/* Y-Axis without axis line, only numbers */}
           <YAxis
             tick={{
-              fill: axisTextColor, // Font color
-              dy: -5, // Move tick labels up
+              fill: axisTextColor,
+              dy: -5,
               dx: -7,
-              fontSize: 12, // Font size
-              fontWeight: 400, // Font weight
-              opacity: 0.4, // Opacity of tick labels
-            }} // Set tick color based on dark mode
-            axisLine={false} // Hide axis line
-            tickLine={false} // Hide tick line
-            domain={[0, 30000]} // Manually set the domain to match the design
-            ticks={[0, 10000, 20000, 30000]} // Set ticks manually as per design
+              fontSize: 12,
+              fontWeight: 400,
+              opacity: 0.4,
+            }}
+            axisLine={false}
+            tickLine={false}
+            domain={[0, 30000]}
+            ticks={[0, 10000, 20000, 30000]}
             tickFormatter={(value) =>
               value === 0 ? value : `${value / 1000}M`
             }
           />
 
-          {/* X-Axis for months */}
           <XAxis
             dataKey="Month"
             tick={{
-              fill: axisTextColor, // Move tick labels up
+              fill: axisTextColor,
               dy: 7,
-              fontSize: 12, // Font size
-              fontWeight: 400, // Font weight
+              fontSize: 12,
+              fontWeight: 400,
               opacity: 0.4,
-            }} // Adjust tick color
+            }}
             axisLine={{ stroke: axisLineColor }}
-            tickLine={false} // Hide tick line
+            tickLine={false}
             strokeOpacity={0.3}
           />
 
-          {/* Solid horizontal lines for Cartesian grid */}
           <CartesianGrid
             stroke={gridColor}
             vertical={false}
             strokeOpacity={0.5}
           />
 
-          {/* Bars for Actual and Projections */}
           <Tooltip
             cursor={{ fill: "transparent" }}
             contentStyle={{
-              backgroundColor: "#313831", // Tooltip background
+              backgroundColor: "#313831",
               border: "none",
-              borderRadius: "8px", // Rounded corners
-              color: "#fff", // Text color based on theme
-              fontSize: "12px", // Font size
+              borderRadius: "8px",
+              color: "#fff",
+              fontSize: "12px",
             }}
             itemStyle={{
-              color: "#fff", // Text color for individual items
+              color: "#fff",
             }}
           />
 
@@ -97,6 +104,7 @@ const ProjectionsBarChart = () => {
             barSize={barWidth} // Adjust bar width
             // Rounded top corners
             stackId="a"
+            isAnimationActive={false}
           />
 
           {/* Projection Bar (overlapping with actual) */}
@@ -110,7 +118,7 @@ const ProjectionsBarChart = () => {
           />
         </BarChart>
       </ResponsiveContainer>
-    </section>
+    </motion.section>
   );
 };
 

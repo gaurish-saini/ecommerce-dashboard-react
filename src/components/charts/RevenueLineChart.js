@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import revenueData from "../../data/revenueData";
 import { ThemeContext } from "../../context/ThemeContext";
+import { motion } from "framer-motion"; // Import framer-motion
 
 const RevenueLineChart = () => {
   const { theme } = useContext(ThemeContext);
@@ -25,7 +26,12 @@ const RevenueLineChart = () => {
   const previousWeekTotal = "$68,768";
 
   return (
-    <section className="p-6 w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
+    <motion.section
+      className="p-6 w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      initial={{ opacity: 0, y: 50 }} // Start below the screen with 0 opacity
+      animate={{ opacity: 1, y: 0 }} // Fade in and slide up
+      transition={{ duration: 0.5, ease: "easeOut" }} // Smooth transition
+    >
       <div className="flex items-center divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue
@@ -137,7 +143,7 @@ const RevenueLineChart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-    </section>
+    </motion.section>
   );
 };
 

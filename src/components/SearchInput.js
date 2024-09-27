@@ -6,6 +6,7 @@ import { ReactComponent as SearchKeyboardAction } from "../assets/images/searchK
 import useOutsideClick from "../hooks/useOutsideClick";
 import { useKeyboardNavigation } from "../hooks/useKeyboardNavigation";
 import { useKeyboardShortcut } from "../hooks/useKeyboardShortcut";
+import { motion } from "framer-motion"; // Import framer-motion
 
 const SearchInput = () => {
   const [query, setQuery] = useState("");
@@ -88,7 +89,12 @@ const SearchInput = () => {
         </span>
       </div>
       {isDropdownVisible && results.length > 0 && (
-        <ul className="p-3 flex flex-col gap-1 absolute top-8 left-0 w-40 h-48 bg-gray-100 text-black shadow-lg overflow-y-auto rounded-lg z-10">
+        <motion.ul
+          className="p-3 flex flex-col gap-1 absolute top-8 left-0 w-40 h-48 bg-gray-100 text-black shadow-lg overflow-y-auto rounded-lg z-20" // Ensure it's above the TopNav
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
           {results.map((result, index) => (
             <li
               key={index}
@@ -102,7 +108,7 @@ const SearchInput = () => {
               {result.name}
             </li>
           ))}
-        </ul>
+        </motion.ul>
       )}
     </div>
   );

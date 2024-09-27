@@ -1,7 +1,27 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 import WorldMap from "react-svg-worldmap";
 import locationData from "../data/locationData";
 import { ThemeContext } from "../context/ThemeContext";
+
+// Define animations for the container and list items
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
 
 const RevenueByLocation = () => {
   const { theme } = useContext(ThemeContext);
@@ -15,36 +35,45 @@ const RevenueByLocation = () => {
   }));
 
   return (
-    <section className="px-6 py-[18px] w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4">
-      <h4 className="p-1 text-black dark:text-white text-sm font-semibold">
+    <motion.section
+      className="px-6 py-[18px] w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.h4
+        className="p-1 text-black dark:text-white text-sm font-semibold"
+        variants={itemVariants}
+      >
         Revenue by Location
-      </h4>
+      </motion.h4>
 
       {/* Container for the map with custom width and height */}
-      <div
+      <motion.div
         className="h-[82px] overflow-hidden"
         style={{
-          backgroundColor: isDarkMode ? "#FFFFFF" : "transparent", // Conditional background based on theme
+          backgroundColor: isDarkMode ? "#FFFFFF" : "transparent",
         }}
+        variants={itemVariants}
       >
         <WorldMap
-          color="#A8C5DA" // Set the hex color for countries
-          backgroundColor="transparent" // Set map background to transparent
-          size="sm" // Adjust the map size
+          color="#A8C5DA"
+          backgroundColor="transparent"
+          size="sm"
           data={countryRevenueData}
           tooltipTextFunction={(countryName, isoCode, value) =>
             `${countryName}: $${(value / 1000).toFixed(1)}K`
           }
-          richInteraction={true} // Enable rich interaction (zoom, pan, etc.)
+          richInteraction={true}
         />
-      </div>
+      </motion.div>
 
       {/* Revenue Data with Progress Bars */}
-      <ul className="flex flex-col gap-[17px]">
+      <motion.ul className="flex flex-col gap-[17px]">
         {locationData.map((city, index) => {
-          const percentage = (city.revenue / maxRevenue) * 100; // Calculate percentage based on fixed maxRevenue
+          const percentage = (city.revenue / maxRevenue) * 100;
           return (
-            <li key={index} className="">
+            <motion.li key={index} className="" variants={itemVariants}>
               <div className="pl-1 flex justify-between text-xs leading-[18px] text-black dark:text-white">
                 <span>{city.city}</span>
                 <span>{city.revenue / 1000}K</span>
@@ -56,11 +85,11 @@ const RevenueByLocation = () => {
                   style={{ width: `${percentage}%` }}
                 ></div>
               </div>
-            </li>
+            </motion.li>
           );
         })}
-      </ul>
-    </section>
+      </motion.ul>
+    </motion.section>
   );
 };
 

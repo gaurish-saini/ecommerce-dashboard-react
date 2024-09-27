@@ -3,6 +3,17 @@ import Brand from "../components/Brand";
 import Favourites from "../components/Favourites";
 import Dashboards from "../components/Dashboards";
 import Pages from "../components/Pages";
+import { motion } from "framer-motion"; // Import Framer Motion
+
+// Define animation variants for child components
+const childVariants = {
+  hidden: { opacity: 0, y: 20 }, // Start with opacity 0 and slight downward position
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" }, // Smooth ease-out effect
+  },
+};
 
 const LeftSidebar = ({ isOpen }) => {
   return (
@@ -11,10 +22,41 @@ const LeftSidebar = ({ isOpen }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <Brand />
-      <Favourites />
-      <Dashboards />
-      <Pages />
+      {/* Apply motion.div to each component for fade-in and slide-up effect */}
+      <motion.div
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"} // Toggle based on sidebar state
+        variants={childVariants}
+      >
+        <Brand />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"} // Toggle based on sidebar state
+        variants={childVariants}
+        transition={{ delay: 0.1 }} // Delay for staggered effect
+      >
+        <Favourites />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"} // Toggle based on sidebar state
+        variants={childVariants}
+        transition={{ delay: 0.2 }} // Delay for staggered effect
+      >
+        <Dashboards />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"} // Toggle based on sidebar state
+        variants={childVariants}
+        transition={{ delay: 0.3 }} // Delay for staggered effect
+      >
+        <Pages />
+      </motion.div>
     </aside>
   );
 };

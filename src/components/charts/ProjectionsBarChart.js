@@ -23,12 +23,6 @@ const ProjectionsBarChart = () => {
   const axisTextColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // Dark vs Light axis text color
   const axisLineColor = isDarkMode ? "#CBD5E0" : "#1C1C1C"; // X-axis color
 
-  // Framer Motion animation variants for bars
-  const barVariants = {
-    hidden: { scaleY: 0, originY: 1 },
-    visible: { scaleY: 1, originY: 1 },
-  };
-
   return (
     <motion.section
       className="relative z-0 px-6 py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"

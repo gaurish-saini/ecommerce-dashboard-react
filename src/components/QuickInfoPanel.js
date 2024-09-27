@@ -26,7 +26,9 @@ const QuickInfoPanel = ({
                 alt="Icon"
                 width={24}
                 height={24}
-                className={`min-w-6 h-6 ${roundedIcon ? "rounded-full" : ""}`}
+                className={`cursor-pointer min-w-6 h-6 ${
+                  roundedIcon ? "rounded-full" : ""
+                }`}
               />
               {verticleDivision && index !== sectionData.length - 1 && (
                 <span className="absolute left-[50%] mt-2 w-px h-[14px] bg-black/10 dark:bg-white/10"></span>
@@ -34,12 +36,12 @@ const QuickInfoPanel = ({
             </div>
             <div className="w-full">
               {data.message && (
-                <div className="text-sm text-black dark:text-white truncate w-48 tracking-[0.1px]">
+                <div className="cursor-pointer text-sm text-black hover:text-black/40 dark:text-white dark:hover:text-white/40 truncate w-48 tracking-[0.1px]">
                   {data.message}
                 </div>
               )}
               {data.name && (
-                <div className="text-sm text-black dark:text-white truncate w-48">
+                <div className="cursor-pointer text-sm text-black hover:text-black/40 dark:text-white dark:hover:text-white/40 truncate w-48">
                   {data.name}
                 </div>
               )}

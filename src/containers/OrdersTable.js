@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { motion } from "framer-motion"; // Import framer-motion for animation
 import orderData from "../data/orderData";
 import { ReactComponent as SearchIcon } from "../assets/images/searchIcon.svg";
 import { ReactComponent as Filter } from "../assets/images/filter.svg";
@@ -23,6 +24,30 @@ const statusOptions = [
   { label: "Rejected", value: "Rejected" },
 ];
 
+// Define animation variants
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      when: "beforeChildren",
+      staggerChildren: 0.2, // Stagger animation for children
+    },
+  },
+};
+
+const rowVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const dropdownVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+};
+
 const OrderTable = () => {
   const [filteredData, setFilteredData] = useState([...orderData]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,13 +59,10 @@ const OrderTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const dropdownRef = useRef(null);
-
-  // Use the custom hook to detect clicks outside of the dropdown
   useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
 
   const rowsPerPage = 10;
 
-  // Handle filtering, sorting, and searching together
   const applyFiltersSortAndSearch = (filters, sortAsc, search) => {
     let filtered = orderData;
     if (filters.length > 0) {
@@ -66,14 +88,12 @@ const OrderTable = () => {
     setCurrentPage(1); // Reset to the first page after filtering, sorting, or searching
   };
 
-  // Handle sorting by user
   const sortByUser = () => {
     const newSortOrder = !isSortedAsc;
     setIsSortedAsc(newSortOrder);
     applyFiltersSortAndSearch(selectedFilters, newSortOrder, searchQuery);
   };
 
-  // Handle filtering by status
   const handleFilterChange = (status) => {
     const isSelected = selectedFilters.includes(status);
     const newFilters = isSelected
@@ -144,7 +164,12 @@ const OrderTable = () => {
   return (
     <>
       {/* Search, Filters, and Sort */}
-      <div className="mt-4 p-2 bg-catskillWhite dark:bg-white/5 rounded-lg flex items-center justify-between">
+      <motion.div
+        className="relative z-20 mt-4 p-2 bg-catskillWhite dark:bg-white/5 rounded-lg flex items-center justify-between"
+        variants={containerVariants} // Apply staggered animation
+        initial="hidden"
+        animate="visible"
+      >
         <div className="flex gap-2">
           <div className="cursor-pointer p-1 w-[28px] h-[28px] text-black dark:text-white">
             <Add />
@@ -159,7 +184,12 @@ const OrderTable = () => {
             </div>
 
             {isDropdownOpen && (
-              <ul className="absolute bg-white border shadow-lg rounded w-40">
+              <motion.ul
+                className="absolute bg-white border shadow-lg rounded w-40"
+                variants={dropdownVariants} // Animate dropdown
+                initial="hidden"
+                animate="visible"
+              >
                 {statusOptions.map((status, index) => (
                   <li key={index} className="px-4 py-2 ">
                     <label className="text-sm flex items-center cursor-pointer">
@@ -173,7 +203,7 @@ const OrderTable = () => {
                     </label>
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
             )}
           </div>
 
@@ -188,9 +218,10 @@ const OrderTable = () => {
           {/* Pills for selected filters */}
           <div className="flex gap-2 ml-6">
             {selectedFilters.map((status) => (
-              <div
+              <motion.div
                 key={status}
                 className="flex text-xs items-center bg-gray-200 text-black px-2 py-1 rounded-full"
+                variants={rowVariants} // Staggered pill animation
               >
                 {status}
                 <button
@@ -199,14 +230,16 @@ const OrderTable = () => {
                 >
                   ✕
                 </button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Search Input */}
-
-        <div className="text-sm flex items-center h-[28px] w-40 px-2 py-1 rounded-lg bg-white/40 dark:bg-black/40 border border-black/10 dark:border-white/10">
+        <motion.div
+          className="text-sm flex items-center h-[28px] w-40 px-2 py-1 rounded-lg bg-white/40 dark:bg-black/40 border border-black/10 dark:border-white/10"
+          variants={rowVariants}
+        >
           <span className="text-black/20 dark:text-white/20">
             <SearchIcon />
           </span>
@@ -218,11 +251,16 @@ const OrderTable = () => {
             placeholder="Search"
             className="w-full ml-1 mr-2 bg-transparent text-black dark:text-white placeholder-black/20 dark:placeholder-white/20 outline-none focus:ring-0"
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Table */}
-      <table className="mt-3 table-auto w-full text-left bg-transparent text-xs leading-[18px]">
+      <motion.table
+        className="relative z-0 mt-3 table-auto w-full text-left bg-transparent text-xs leading-[18px]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <thead>
           <tr className="text-black/40 dark:text-white/40 border-b border-black/20 dark:border-white/20">
             <th className="py-[11px] px-3">
@@ -241,15 +279,17 @@ const OrderTable = () => {
             <th className="py-[11px] px-3 font-normal">Status</th>
           </tr>
         </thead>
-        <tbody>
+
+        <motion.tbody>
           {paginatedData.map((row) => (
-            <tr
+            <motion.tr
               key={row.id}
               className={`text-black dark:text-white border-b border-black/5 dark:border-white/5 ${
                 selectedRows.includes(row.id)
                   ? "bg-catskillWhite dark:bg-white/5 rounded-lg"
                   : ""
               }`}
+              variants={rowVariants} // Animate each row
             >
               <td className="py-[11px] px-3 font-normal">
                 <input
@@ -280,13 +320,16 @@ const OrderTable = () => {
                   {row.status}
                 </span>
               </td>
-            </tr>
+            </motion.tr>
           ))}
-        </tbody>
-      </table>
+        </motion.tbody>
+      </motion.table>
 
       {/* Pagination */}
-      <div className="pagination-controls flex gap-4 mt-4 items-center justify-end">
+      <motion.div
+        className="pagination-controls flex gap-4 mt-4 items-center justify-end"
+        variants={containerVariants}
+      >
         <button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
@@ -306,7 +349,7 @@ const OrderTable = () => {
         >
           <RightArrow />
         </button>
-      </div>
+      </motion.div>
     </>
   );
 };

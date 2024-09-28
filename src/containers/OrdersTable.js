@@ -6,6 +6,8 @@ import { ReactComponent as Filter } from "../assets/images/filter.svg";
 import { ReactComponent as Sort } from "../assets/images/sort.svg";
 import { ReactComponent as Add } from "../assets/images/plus.svg";
 import { ReactComponent as RightArrow } from "../assets/images/rightArrow.svg";
+import { ReactComponent as CalendarBlank } from "../assets/images/calendarBlank.svg";
+import { ReactComponent as MoreOptionsIcon } from "../assets/images/moreOptionsIcon.svg";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 const statusColors = {
@@ -39,7 +41,7 @@ const containerVariants = {
 };
 
 const rowVariants = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
@@ -49,6 +51,8 @@ const dropdownVariants = {
 };
 
 const OrderTable = () => {
+  const [hoveredRow, setHoveredRow] = useState(null);
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null); // Track the index of selected row
   const [filteredData, setFilteredData] = useState([...orderData]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -62,6 +66,7 @@ const OrderTable = () => {
   useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
 
   const rowsPerPage = 10;
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage); // Calculate total pages
 
   const applyFiltersSortAndSearch = (filters, sortAsc, search) => {
     let filtered = orderData;
@@ -125,11 +130,13 @@ const OrderTable = () => {
   );
 
   // Handle row selection
-  const handleRowSelection = (id) => {
+  const handleRowSelection = (id, rowIndex) => {
     if (selectedRows.includes(id)) {
       setSelectedRows(selectedRows.filter((rowId) => rowId !== id));
+      setSelectedRowIndex(null); // Deselect the row index
     } else {
       setSelectedRows([...selectedRows, id]);
+      setSelectedRowIndex(rowIndex); // Capture the selected row index
     }
   };
 
@@ -146,7 +153,7 @@ const OrderTable = () => {
 
   // Handle pagination next/previous
   const handleNextPage = () => {
-    if (currentPage < Math.ceil(filteredData.length / rowsPerPage)) {
+    if (currentPage < totalPages) {
       setCurrentPage((prevPage) => prevPage + 1);
       setSelectedRows([]);
       setAllSelected(false);
@@ -159,6 +166,21 @@ const OrderTable = () => {
       setSelectedRows([]);
       setAllSelected(false);
     }
+  };
+
+  const handleRowHover = (index) => {
+    setHoveredRow(index);
+  };
+
+  const handleRowLeave = () => {
+    setHoveredRow(null);
+  };
+
+  // Handle specific page selection
+  const handlePageSelect = (page) => {
+    setCurrentPage(page);
+    setSelectedRows([]);
+    setAllSelected(false);
   };
 
   return (
@@ -256,51 +278,67 @@ const OrderTable = () => {
 
       {/* Table */}
       <motion.table
-        className="relative z-0 mt-3 table-auto w-full text-left bg-transparent text-xs leading-[18px]"
+        className="relative z-0 mt-3 pb-px table-auto w-full text-left bg-transparent text-xs leading-[18px]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <thead>
           <tr className="text-black/40 dark:text-white/40 border-b border-black/20 dark:border-white/20">
-            <th className="py-[11px] px-3">
+            <th className="w-9 py-2.5 px-1">
               <input
-                class="cursor-pointer align-sub appearance-none w-[14px] h-[14px] border rounded-[4px] checked:bg-black dark:checked:bg-perfume checked:border-black/40 dark:checked:border-white/20 checked:focus:ring-0 checked:checked:before:content-['✓'] checked:before:text-white dark:checked:before:text-black checked:before:block checked:before:-mt-0.5"
+                className="cursor-pointer align-sub appearance-none w-[14px] h-[14px] border rounded-[4px] checked:bg-black dark:checked:bg-perfume checked:border-black/40 dark:checked:border-white/20 checked:focus:ring-0 checked:checked:before:content-['✓'] checked:before:text-white dark:checked:before:text-black checked:before:block checked:before:-mt-0.5"
                 type="checkbox"
                 checked={allSelected}
                 onChange={handleSelectAll}
               />
             </th>
-            <th className="py-[11px] px-3 font-normal">Order ID</th>
-            <th className="py-[11px] px-3 font-normal">User</th>
-            <th className="py-[11px] px-3 font-normal">Project</th>
-            <th className="py-[11px] px-3 font-normal">Address</th>
-            <th className="py-[11px] px-3 font-normal">Date</th>
-            <th className="py-[11px] px-3 font-normal">Status</th>
+            <th className="w-[100px] py-2.5 font-normal">Order ID</th>
+            <th className="w-[214px] py-2.5 font-normal">User</th>
+            <th className="w-[214px] py-2.5 pl-1 font-normal">Project</th>
+            <th className="w-[270px] py-2.5 pl-2 font-normal">Address</th>
+            <th className="w-48 py-2.5 pl-3 font-normal">Date</th>
+            <th className="w-[110px] py-2.5 pl-4 font-normal">Status</th>
+            <th className="w-12 py-2.5 font-normal">
+              <></>
+            </th>
           </tr>
         </thead>
-
         <motion.tbody>
-          {paginatedData.map((row) => (
+          {paginatedData.map((row, rowIndex) => (
             <motion.tr
               key={row.id}
-              className={`text-black dark:text-white border-b border-black/5 dark:border-white/5 ${
+              onMouseEnter={() => handleRowHover(rowIndex)}
+              onMouseLeave={handleRowLeave}
+              className={`
+              group text-black dark:text-white border-b border-black/5 dark:border-white/5
+              hover:border-none hover:bg-catskillWhite dark:hover:bg-white/5 hover:shadow-md hover:rounded-lg 
+              transition-all duration-300 ease-in-out
+              ${
+                // Apply border-none for the previous row if hovered or selected
+                rowIndex === hoveredRow - 1 ||
+                (selectedRowIndex !== null && rowIndex === selectedRowIndex - 1)
+                  ? "border-none"
+                  : "border-b"
+              }
+              ${
                 selectedRows.includes(row.id)
-                  ? "bg-catskillWhite dark:bg-white/5 rounded-lg"
+                  ? "bg-catskillWhite dark:bg-white/5 rounded-lg shadow-md border-none"
                   : ""
-              }`}
+              }
+            `}
               variants={rowVariants} // Animate each row
             >
-              <td className="py-[11px] px-3 font-normal">
+              <td className="py-[7.5px] px-1 font-normal rounded-l-lg">
                 <input
-                  class="cursor-pointer align-sub appearance-none w-[14px] h-[14px] border rounded-[4px] checked:bg-black dark:checked:bg-perfume checked:border-black/40 dark:checked:border-white/20 checked:focus:ring-0 checked:checked:before:content-['✓'] checked:before:text-white dark:checked:before:text-black checked:before:block checked:before:-mt-0.5"
+                  className="cursor-pointer align-sub appearance-none w-[14px] h-[14px] border rounded-[4px] checked:bg-black dark:checked:bg-perfume checked:border-black/40 dark:checked:border-white/20 checked:focus:ring-0 checked:checked:before:content-['✓'] checked:before:text-white dark:checked:before:text-black checked:before:block checked:before:-mt-0.5"
                   type="checkbox"
                   checked={selectedRows.includes(row.id)}
-                  onChange={() => handleRowSelection(row.id)}
+                  onChange={() => handleRowSelection(row.id, rowIndex)} // Capture the rowIndex when selected
                 />
               </td>
-              <td className="py-[11px] px-3 font-normal">{row.id}</td>
-              <td className="flex items-center gap-2 py-[11px] px-3 font-normal">
+              <td className="py-[7.5px] font-normal">{row.id}</td>
+              <td className="flex items-center gap-2 py-[7.5px] font-normal">
                 <img
                   className="min-w-6 h-6 rounded-full"
                   src={row.avatar}
@@ -309,16 +347,34 @@ const OrderTable = () => {
                 />
                 {row.user}
               </td>
-              <td className="py-[11px] px-3 font-normal">{row.project}</td>
-              <td className="py-[11px] px-3 font-normal">{row.address}</td>
-              <td className="py-[11px] px-3 font-normal">{row.date}</td>
-              <td className="py-[11px] px-3 font-normal">
+              <td className="py-[7.5px] pl-1 font-normal">{row.project}</td>
+              <td className="py-[7.5px] pl-2 font-normal">{row.address}</td>
+              <td className="py-[7.5px] pl-3 font-normal">
+                <div className="flex gap-1.5 items-center">
+                  <CalendarBlank />
+                  {row.date}
+                </div>
+              </td>
+              <td className="py-[7.5px] pl-4 font-normal">
                 <span
-                  className={`flex items-center ${statusColors[row.status]}`}
+                  className={`flex items-center whitespace-nowrap ${
+                    statusColors[row.status]
+                  }`}
                 >
                   <span className="min-w-1.5 h-1.5 rounded-full bg-current mr-[5px]"></span>
                   {row.status}
                 </span>
+              </td>
+              <td className=" rounded-r-lg">
+                {/* Show three dots when hovered or selected */}
+                <div className="w-12 text-center">
+                  {(hoveredRow === rowIndex ||
+                    selectedRows.includes(row.id)) && (
+                    <button className=" p-1">
+                      <MoreOptionsIcon className="w-5 h-5 text-gray-500 dark:text-gray-300" />
+                    </button>
+                  )}
+                </div>
               </td>
             </motion.tr>
           ))}
@@ -327,24 +383,38 @@ const OrderTable = () => {
 
       {/* Pagination */}
       <motion.div
-        className="pagination-controls flex gap-4 mt-4 items-center justify-end"
+        className="pagination-controls flex gap-2 mt-3.5 items-center justify-end"
         variants={containerVariants}
       >
         <button
           onClick={handlePrevPage}
           disabled={currentPage === 1}
-          className="cursor-pointer text-black dark:text-white p-1 w-6 h-6 transform rotate-180"
+          className="cursor-pointer text-black dark:text-white p-1 w-7 h-7 transform rotate-180"
         >
           <RightArrow />
         </button>
-        <span className="text-sm text-black dark:text-white">
-          {currentPage}
-        </span>
+
+        {/* Render page numbers dynamically */}
+        {[...Array(totalPages)].map((_, index) => {
+          const page = index + 1;
+          return (
+            <button
+              key={page}
+              onClick={() => handlePageSelect(page)}
+              className={`cursor-pointer text-sm p-1 w-7 h-7 ${
+                currentPage === page
+                  ? "bg-black/5 text-black rounded-lg dark:bg-white/10 dark:text-white"
+                  : "text-black dark:text-white"
+              }`}
+            >
+              {page}
+            </button>
+          );
+        })}
+
         <button
           onClick={handleNextPage}
-          disabled={
-            currentPage === Math.ceil(filteredData.length / rowsPerPage)
-          }
+          disabled={currentPage === totalPages}
           className="cursor-pointer text-black dark:text-white p-1 w-6 h-6"
         >
           <RightArrow />

@@ -29,13 +29,13 @@ const headerVariants = {
 const TopSellingProducts = () => {
   return (
     <motion.section
-      className="p-6 w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl"
+      className="p-3 lg:p-6 lg:w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl"
       variants={containerVariants} // Apply animation to the section
       initial="hidden"
       animate="visible"
     >
       <motion.h4
-        className="text-black dark:text-white text-sm font-semibold mb-1"
+        className="max-lg:text-center text-black dark:text-white text-sm font-semibold mb-1"
         variants={itemVariants} // Animate the header
       >
         Top Selling Products

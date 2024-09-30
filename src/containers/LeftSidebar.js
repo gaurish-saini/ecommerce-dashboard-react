@@ -18,8 +18,8 @@ const childVariants = {
 const LeftSidebar = ({ isOpen }) => {
   return (
     <aside
-      className={`max-w-[212px] w-full flex flex-col gap-4 px-4 py-6 bg-white dark:bg-black border-r border-black/10 dark:border-white/10 transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
+      className={`overflow-y-auto max-lg:z-10 transition-transform duration-1000 lg:w-[14.7%] h-full absolute top-[70px] lg:top-0 left-0 flex flex-col gap-4 px-4 py-6 bg-white dark:bg-black border-r border-black/10 dark:border-white/10 ${
+        !isOpen ? "-translate-x-full" : ""
       }`}
     >
       {/* Apply motion.div to each component for fade-in and slide-up effect */}

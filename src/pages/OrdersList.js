@@ -18,11 +18,11 @@ const mainVariants = {
 
 const OrderList = () => {
   return (
-    <motion.main
+    <motion.div
       variants={mainVariants} // Apply animation to the main container
       initial="hidden"
       animate="visible"
-      className="p-[28px] flex flex-col"
+      className="max-lg:mt-[70px] p-[28px] flex flex-col"
     >
       {/* Search, Filters, and Sort Section */}
       <motion.h4
@@ -36,7 +36,7 @@ const OrderList = () => {
 
       {/* The animated table component */}
       <OrderTable />
-    </motion.main>
+    </motion.div>
   );
 };
 

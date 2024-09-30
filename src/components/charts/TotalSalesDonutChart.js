@@ -38,13 +38,13 @@ const TotalSalesDonutChart = () => {
 
   return (
     <motion.section
-      className="p-6 w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      className="p-3 lg:p-6 lg:w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
       initial="hidden"
       animate="visible"
       variants={listVariants} // Apply animation to the surrounding section
     >
       <motion.h4
-        className="px-0.5 tracking-wide text-black dark:text-white text-sm font-semibold"
+        className="lg:px-0.5 max-lg:text-center tracking-wide text-black dark:text-white text-sm font-semibold"
         variants={listItemVariants} // Animate the heading
       >
         Total Sales

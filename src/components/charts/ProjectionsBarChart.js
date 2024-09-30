@@ -25,7 +25,7 @@ const ProjectionsBarChart = () => {
 
   return (
     <motion.section
-      className="relative z-0 px-6 py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      className="relative z-0 p-3 lg:px-6 lg:py-5 bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col items-center lg:items-start gap-4"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

@@ -17,9 +17,9 @@ const TopNav = ({ toggleLeftSidebar, toggleRightSidebar }) => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="relative flex justify-between items-center px-[28px] py-5 bg-white dark:bg-black border-b border-black/10 dark:border-white/10 z-50" // Add z-index
+      className="fixed lg:relative w-full flex justify-between items-center px-4 lg:px-[28px] py-5 bg-white dark:bg-black border-b border-black/10 dark:border-white/10 z-50" // Add z-index
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 lg:gap-2">
         <span
           className="p-1 cursor-pointer text-black dark:text-white"
           onClick={toggleLeftSidebar}
@@ -29,12 +29,14 @@ const TopNav = ({ toggleLeftSidebar, toggleRightSidebar }) => {
         <span className="p-1 cursor-pointer text-black dark:text-white">
           <Star />
         </span>
-        <Breadcrumbs /> {/* Breadcrumbs component */}
+        <div className="hidden lg:block">
+          <Breadcrumbs />
+        </div>
       </div>
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-1 lg:gap-5">
         <SearchInput />
-        <div className="flex gap-[13px] items-center">
+        <div className="flex gap-1 lg:gap-[13px] items-center">
           <span
             className="p-1 cursor-pointer text-black dark:text-white"
             onClick={toggleTheme}

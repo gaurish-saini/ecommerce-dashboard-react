@@ -33,14 +33,14 @@ const OverviewCard = ({
 
   return (
     <motion.div
-      className={`p-6 rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
+      className={`p-3 lg:p-6 rounded-2xl flex flex-col cursor-pointer ${appliedClasses}`}
       whileHover={{ scale: 1.05 }} // Slight scale up on hover
       whileTap={{ scale: 0.95 }} // Scale down on click/tap
       transition={{ type: "spring", stiffness: 300 }} // Springy effect
     >
       <h4 className="mb-2 text-sm font-semibold">{title}</h4>
       <div className="flex flex-row hover:flex-row-reverse items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 rounded-lg">
-        <span className="text-2xl leading-9 font-semibold">
+        <span className="text-xl lg:text-2xl leading-9 font-semibold">
           {value.toLocaleString()}
         </span>
         <span className="mr-px mb-px text-xs leading-[18px] inline-flex items-center gap-[5.5px]">

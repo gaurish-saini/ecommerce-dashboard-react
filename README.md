@@ -1,6 +1,6 @@
-# **Dashboard React Application**
+# **Buywind Dashboard - A React Application**
 
-This is a feature-rich, interactive React dashboard application designed to handle various components such as dynamic tables, filters, pagination, search functionalities, sidebar navigation, and more. The project uses `react-router-dom` for routing, Tailwind CSS for styling, and state management via `useState`, `useEffect`, and custom hooks.
+This feature-rich, interactive React dashboard application is designed to handle various components such as dynamic tables, filters, pagination, search functionalities, sidebar navigation, and more. The project uses `react-router-dom` for routing, Tailwind CSS for styling, and state management via `useState`, `useEffect`, and custom hooks.
 
 ## **Design**
 
@@ -19,16 +19,16 @@ This is a feature-rich, interactive React dashboard application designed to hand
 
 ## **Features**
 
-1. **Dynamic Order List**: A fully paginated, sortable, and filterable order list with status color codes. Click on the Orders card in the dashboard to view Order List.
-2. **Left and Right Sidebar**: Toggleable left and right sidebars with smooth slide-in and out transitions. Click on the sidebars icons in the top navigation on either side to toggle.
-3. **Search Functionality**:
-   - Global search functionality with keyboard shortcuts (`Cmd + /` or `Ctrl + /`) to quickly search and navigate.
-4. **Breadcrumb Navigation**: A dynamic breadcrumb component that reflects the current route and provides a seamless user experience.
-5. **Sort and Filter**:
+1. **Dark Mode Support**: Complete dark mode styling using Tailwind CSS. Click the Sun icon in the top navigation to toggle between light and dark mode.
+2. **Dynamic Order List**: A fully paginated, sortable, and filterable order list with status color codes. Click on the Orders card in the dashboard to view the Order List.
+3. **Left and Right Sidebar**: Toggleable left and right sidebars with smooth slide-in and out transitions. Click on the sidebar icons in the top navigation on either side to toggle.
+4. **Search Functionality**:
+   - Global search functionality with keyboard shortcuts (`Cmd + /` or `Ctrl + /`) to quickly search and up/down key arrows to navigate.
+5. **Breadcrumb Navigation**: A dynamic breadcrumb component that reflects the current route and provides a seamless user experience.
+6. **Sort and Filter**:
    - Sort functionality to organize the table by user or other parameters.
-   - Multi-select filter with interactive pills that allow removing applied filters.
-6. **Custom Accordion Component**: Smooth accordion transitions for various page components.
-7. **Dark Mode Support**: Complete dark mode styling using Tailwind CSS. Click on the Sun icon in the top navigation to toggle between light and dark mode.
+   - Multi-select filters with interactive pills that allow the removal of applied filters.
+7. **Custom Accordion Component**: Smooth accordion transitions for various page components.
 
 ---
 
@@ -36,6 +36,7 @@ This is a feature-rich, interactive React dashboard application designed to hand
 
 - **React**: The core framework for building UI components.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Framer Motion**: To handle animations(for eg: staggered animation) on different elements for a visual appeal.
 - **React Router DOM**: For routing and navigation.
 - **Recharts**: To implement charts and visualizations.
 - **Custom Hooks**: For handling various functionalities such as dropdowns, keyboard shortcuts, and click outside.

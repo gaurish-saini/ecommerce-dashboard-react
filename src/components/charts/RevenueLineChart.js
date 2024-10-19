@@ -27,17 +27,17 @@ const RevenueLineChart = () => {
 
   return (
     <motion.section
-      className="p-6 w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      className="p-3 lg:p-6 lg:w-[74%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
       initial={{ opacity: 0, y: 50 }} // Start below the screen with 0 opacity
       animate={{ opacity: 1, y: 0 }} // Fade in and slide up
       transition={{ duration: 0.5, ease: "easeOut" }} // Smooth transition
     >
-      <div className="flex items-center divide-x gap-4">
+      <div className="flex flex-col lg:flex-row items-center lg:divide-x gap-4">
         <h4 className="text-black dark:text-white text-sm font-semibold">
           Revenue
         </h4>
-        <div className="flex items-center gap-5 pl-6">
-          <span className="pl-1 pr-2 pb-0.5 flex items-center gap-1.5">
+        <div className="flex items-center gap-2 lg:gap-5 lg:pl-6">
+          <span className="lg:pl-1 lg:pr-2 lg:pb-0.5 flex items-center gap-1.5">
             <span
               className="w-1.5 h-1.5 rounded-full"
               style={{
@@ -49,7 +49,7 @@ const RevenueLineChart = () => {
               <span className="ml-[3px] font-semibold">{currentWeekTotal}</span>
             </span>
           </span>
-          <span className="pl-1 pr-2 pb-0.5 flex items-center gap-1.5">
+          <span className="lg:pl-1 lg:pr-2 lg:pb-0.5 flex items-center gap-1.5">
             <span
               className="w-1.5 h-1.5 rounded-full"
               style={{

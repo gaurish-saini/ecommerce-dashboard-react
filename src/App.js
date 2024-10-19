@@ -13,8 +13,8 @@ import DefaultDashboard from "./pages/DefaultDashboard";
 import OrdersList from "./pages/OrdersList";
 
 const App = () => {
-  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(true);
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true);
+  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
 
   const toggleLeftSidebar = () => setIsLeftSidebarOpen(!isLeftSidebarOpen);
   const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen);
@@ -22,26 +22,37 @@ const App = () => {
   return (
     <ThemeProvider>
       <Router>
-        <div className="flex max-w-[1440px] mx-auto">
-          {isLeftSidebarOpen && <LeftSidebar isOpen={isLeftSidebarOpen} />}
-          <div className="flex-1 bg-white dark:bg-black">
+        <div className="relative flex overflow-x-hidden">
+          <LeftSidebar isOpen={isLeftSidebarOpen} />
+          <div
+            className={`
+              max-lg:w-full max-lg:m-0 flex flex-col basis-full transition-margin-x duration-1000 bg-white dark:bg-black
+              ${!isLeftSidebarOpen ? "" : "ml-[14.75%]"} 
+              ${!isRightSidebarOpen ? "" : "mr-[19.44%]"}
+            `}
+          >
             <TopNav
               toggleLeftSidebar={toggleLeftSidebar}
               toggleRightSidebar={toggleRightSidebar}
             />
-            <Routes>
-              {/* Redirect root URL to /dashboards/default */}
-              <Route path="/" element={<Navigate to="/dashboards/default" />} />
+            <main>
+              <Routes>
+                {/* Redirect root URL to /dashboards/default */}
+                <Route
+                  path="/"
+                  element={<Navigate to="/dashboards/default" />}
+                />
 
-              {/* Default Dashboard Route */}
-              <Route
-                path="/dashboards/default"
-                element={<DefaultDashboard />}
-              />
-              <Route path="/orders" element={<OrdersList />} />
-            </Routes>
+                {/* Default Dashboard Route */}
+                <Route
+                  path="/dashboards/default"
+                  element={<DefaultDashboard />}
+                />
+                <Route path="/orders" element={<OrdersList />} />
+              </Routes>
+            </main>
           </div>
-          {isRightSidebarOpen && <RightSidebar isOpen={isRightSidebarOpen} />}
+          <RightSidebar isOpen={isRightSidebarOpen} />
         </div>
       </Router>
     </ThemeProvider>

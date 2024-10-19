@@ -36,13 +36,13 @@ const RevenueByLocation = () => {
 
   return (
     <motion.section
-      className="px-6 py-[18px] w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
+      className="px-3 lg:px-6 py-2.5 lg:py-[18px] lg:w-[23%] bg-catskillWhite dark:bg-mineShaft rounded-2xl flex flex-col gap-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.h4
-        className="p-1 text-black dark:text-white text-sm font-semibold"
+        className="p-1 max-lg:text-center text-black dark:text-white text-sm font-semibold"
         variants={itemVariants}
       >
         Revenue by Location

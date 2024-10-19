@@ -18,7 +18,7 @@ const OrderListTable = ({
   containerVariants,
 }) => {
   return (
-    <section className="h-[440px] mt-3">
+    <section className="lg:h-[440px] mt-3 overflow-x-auto">
       <motion.table
         className="relative z-0 w-full text-left bg-transparent text-xs leading-[18px] table-auto"
         variants={containerVariants}

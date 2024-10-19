@@ -17,6 +17,9 @@ module.exports = {
         shakespeare: "#59A8D4",
         goldenTainoi: "#FFC555",
       },
+      transitionProperty: {
+        "margin-x": "margin-left, margin-right",
+      },
     },
   },
   plugins: [],

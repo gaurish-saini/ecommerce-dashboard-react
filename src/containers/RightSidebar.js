@@ -18,8 +18,8 @@ const childVariants = {
 const RightSidebar = ({ isOpen }) => {
   return (
     <aside
-      className={`max-w-[280px] w-full flex flex-col gap-6 p-5 bg-white dark:bg-black border-l border-black/10 dark:border-white/10 transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
+      className={`overflow-y-auto transition-transform duration-1000 lg:w-[19.44%] h-full absolute top-[70px] lg:top-0 right-0 flex flex-col gap-6 p-5 bg-white dark:bg-black border-l border-black/10 dark:border-white/10 ${
+        !isOpen ? "translate-x-full" : ""
       }`}
     >
       {/* Apply Framer Motion to child components */}

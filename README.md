@@ -122,4 +122,4 @@ This will open the app in your default browser at `http://localhost:3000/`.
 
 ## **Deployment**
 
-- This project is deployed here: https://byewind-juspay.netlify.app/
+- This project is deployed here: [https://byewind-juspay.netlify.app/](https://byewind.netlify.app/)
